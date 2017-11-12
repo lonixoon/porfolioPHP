@@ -15,10 +15,10 @@ class Test1Controller extends Controller
      * @return void
      */
     // доступ к странице только после авторизации
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
+//    public function __construct()
+//    {
+//        $this->middleware('auth');
+//    }
 
     /**
      * Show the application dashboard.
