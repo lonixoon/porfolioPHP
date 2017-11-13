@@ -110,7 +110,7 @@
         </ul>
     </div>
     <div class="about-footer">
-        <p class="about-footer__text">Я начинающий веб разработчик из Новосибирска.
+        <p class="about-footer__text">Я веб разработчик из Новосибирска.
             <br> Этот сайт делаю в рамках учебного проекта.</p>
         <p class="about-footer__text">Свёрстано мной.</p>
     </div>

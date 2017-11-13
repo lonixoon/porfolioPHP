@@ -19,27 +19,31 @@ Route::get('/', function () {
 });
 
 Auth::routes();
+
 /* страницы не требующие авторизации */
-Route::get('/work', 'PageController@work');
-Route::get('/blog', 'PageController@blog');
-Route::get('/about', 'PageController@about');
+Route::get('/work', 'WorkController@index');
+Route::get('/blog', 'BlogController@index');
+Route::get('/about', 'AboutController@index');
 
-
-/* страницы требующие авторизацию */
+/* маршруты требующие авторизацию */
 Route::group(
     ['middleware' => 'auth'], function () {
     /* страницы */
-    Route::get('/adminSkill', 'PageController@adminSkill');
-    Route::get('/adminBlog', 'PageController@adminBlog');
-    Route::get('/adminWork', 'PageController@adminWork');
+    Route::get('/admin/about', 'AboutController@indexAdmin');
+    Route::get('/admin/blog', 'BlogController@indexAdmin');
+    Route::get('/admin/work', 'WorkController@indexAdmin');
 
     /* сохраненение данных */
+    Route::get('/admin/about/save', 'AboutController@save');
+    Route::get('/admin/blog/save', 'BlogController@save');
+    Route::get('/admin/work/save', 'WorkController@save');
 
-    /* тестовые страницы */
-    Route::get('/home', 'HomeController@index')->name('home');
-    Route::get('/test1', 'Test1Controller@index');
-    Route::get('/test1/create', 'Test1Controller@create');
-    Route::get('/test1/last', 'Test1Controller@last');
-    Route::post('/test1/send', 'Test1Controller@send');
+
+//    /* тестовые страницы */
+//    Route::get('/home', 'HomeController@index')->name('home');
+//    Route::get('/test1', 'Test1Controller@index');
+//    Route::get('/test1/create', 'Test1Controller@create');
+//    Route::get('/test1/last', 'Test1Controller@last');
+//    Route::post('/test1/send', 'Test1Controller@send');
 });
 

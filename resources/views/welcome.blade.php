@@ -1,41 +1,41 @@
 <!DOCTYPE html>
-<html lang="lang="{{ app()->getLocale() }}">
+<html lang="{{ app()->getLocale() }}">
 <head>
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
-    <link href="{{ url('css/styles.min.css') }}" rel="stylesheet"/>
-    <script src="{{ url('lib/jquery-3.2.1.slim.min.js') }}"></script>
+    <link href="{{ asset('css/styles.min.css') }}" rel="stylesheet"/>
+    <script src="{{ asset('lib/jquery-3.2.1.slim.min.js') }}"></script>
     <title>Портфолио</title>
 </head>
 <body class="page page--index">
 <header class="page__header page__header--index">
     <div class="parallax">
-        <div class="parallax__layer parallax__layer--mouse"><img src="{{ url('img/parallax/layer_1.png') }}"/></div>
-        <div class="parallax__layer parallax__layer--mouse"><img src="{{ url('img/parallax/layer_2.png') }}"/></div>
-        <div class="parallax__layer parallax__layer--mouse"><img src="{{ url('img/parallax/layer_3.png') }}"/></div>
-        <div class="parallax__layer parallax__layer--mouse"><img src="{{ url('img/parallax/layer_4.png') }}"/></div>
-        <div class="parallax__layer parallax__layer--mouse"><img src="{{ url('img/parallax/layer_5.png') }}"/></div>
-        <div class="parallax__layer parallax__layer--mouse"><img src="{{ url('img/parallax/layer_6.png') }}"/></div>
-        <div class="parallax__layer parallax__layer--mouse"><img src="{{ url('img/parallax/layer_7.png') }}"/></div>
-        <div class="parallax__layer parallax__layer--mouse"><img src="{{ url('img/parallax/layer_8.png') }}"/></div>
+        <div class="parallax__layer parallax__layer--mouse"><img src="{{ asset('img/parallax/layer_1.png') }}"/></div>
+        <div class="parallax__layer parallax__layer--mouse"><img src="{{ asset('img/parallax/layer_2.png') }}"/></div>
+        <div class="parallax__layer parallax__layer--mouse"><img src="{{ asset('img/parallax/layer_3.png') }}"/></div>
+        <div class="parallax__layer parallax__layer--mouse"><img src="{{ asset('img/parallax/layer_4.png') }}"/></div>
+        <div class="parallax__layer parallax__layer--mouse"><img src="{{ asset('img/parallax/layer_5.png') }}"/></div>
+        <div class="parallax__layer parallax__layer--mouse"><img src="{{ asset('img/parallax/layer_6.png') }}"/></div>
+        <div class="parallax__layer parallax__layer--mouse"><img src="{{ asset('img/parallax/layer_7.png') }}"/></div>
+        <div class="parallax__layer parallax__layer--mouse"><img src="{{ asset('img/parallax/layer_8.png') }}"/></div>
     </div>
     @if (Route::has('login'))
         @auth
-        <a class="authorization-btn btn btn--login" href="{{ url('/authorization.html') }}">Администрирование</a>
+        <a class="authorization-btn btn btn--login" href="{{ url('/admin/work') }}">Администрирование</a>
         <a href="{{ route('logout') }}" class="authorization-btn btn btn--login"
            onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Выход</a>
         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
             {{ csrf_field() }}
         </form>
     @else
-        <a class="authorization-btn btn btn--login" href="{{ url('/authorization.html') }}">Авторизоваться</a>
+        <a class="authorization-btn btn btn--login" href="{{ url('/admin/work') }}">Авторизоваться</a>
         @endauth
     @endif
     <div class="flip">
         <div class="flip__wrap">
             <div class="author flip__front">
                 <div class="author__wrap"><img class="author__photo author__photo--index"
-                                               src="{{ url('img/bg/my_photo.jpg') }}" alt="Алексей Сойнов"/>
+                                               src="{{ asset('img/bg/my_photo.jpg') }}" alt="Алексей Сойнов"/>
                     <p class="author__name author__name--index">Сойнов Алексей</p>
                     <p class="author__title">Личный сайт веб разработчика</p>
                     <div class="social">
@@ -61,11 +61,16 @@
                     </div>
                     <nav class="main-nav">
                         <ul class="main-nav__list main-nav__list--index-page">
-                            <li class="main-nav__item"><a class="btn btn--main-nav btn--green" href="my-work.html">Мои
-                                    работы</a></li>
-                            <li class="main-nav__item"><a class="btn btn--main-nav btn--green" href="about.html">Обо
-                                    мне</a></li>
-                            <li class="main-nav__item"><a class="btn btn--main-nav btn--green" href="blog.html">Блог</a>
+                            <li class="main-nav__item">
+                                <a class="btn btn--main-nav btn--green" href="{{ url('/work') }}">Мои работы</a>
+                            </li>
+
+                            <li class="main-nav__item">
+                                <a class="btn btn--main-nav btn--green" href="{{ url('/about') }}">Обо мне</a>
+                            </li>
+
+                            <li class="main-nav__item">
+                                <a class="btn btn--main-nav btn--green" href="{{ url('/blog') }}">Блог</a>
                             </li>
                         </ul>
                     </nav>
@@ -113,9 +118,8 @@
                                 <label class="authorization__radio-btn radio" for="authorization-no">Не уверен</label>
                             </div>
                         </div>
-                        <div class="authorization__btn"><a class="btn btn--authorization btn--green"
-                                                           href="{{ url('/') }}">На
-                                главную</a>
+                        <div class="authorization__btn">
+                            <a class="btn btn--authorization btn--green" href="{{ url('/') }}">На главную</a>
                             <button type="submit" class="btn btn--authorization btn--green">Войти</button>
                         </div>
                     </form>
@@ -124,6 +128,6 @@
         </div>
     </div>
 </header>
-<script src="{{ url('js/main.min.js') }}"></script>
+<script src="{{ asset('js/main.min.js') }}"></script>
 </body>
 </html>
