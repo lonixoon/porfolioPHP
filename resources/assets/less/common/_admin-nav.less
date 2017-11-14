@@ -1,0 +1,51 @@
+.admin-nav {
+  background-color: #f0efe9;
+
+  &__list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  &__item {
+    display: flex;
+    text-transform: uppercase;
+    text-align: center;
+    font-weight: 700;
+    border-bottom: 2px solid #fff;
+
+    &:last-child {
+      border-bottom: none;
+    }
+    
+    a {
+      width: 100%;
+      padding: 10px 0;
+    }
+  }
+}
+
+
+@media @tablet {
+  .admin-nav {
+    &__list {
+      display: flex;
+    }
+
+    &__item {
+      // display: flex;
+      flex-grow: 1;
+      border-bottom: none;
+      border-right: 2px solid #fff;
+
+      &:last-child {
+        border-right: none;
+      }
+
+      a {
+        padding: 15px 0;
+        font-weight: 500;
+      }
+    }
+  }
+}

@@ -1,0 +1,86 @@
+.who-am-i {
+  display: flex;
+  flex-direction: column;
+  // justify-content: center;
+  align-items: center;
+  background-color: #f0eee9;
+  
+  &__autor-photo {
+    text-align: center;
+    padding-top: 15px;
+
+    // img {
+      // width: 400px;
+      // max-width: 60%;
+    // }
+  }
+
+  &__icon-autor-photo {
+    fill: none;
+    height: 200px;
+    stroke: @gray;
+    stroke-width: 4px;
+
+    &-body {
+      stroke-dasharray: 600;
+      stroke-dashoffset: 600;
+      transition: all 3000ms ease-in-out;
+    }
+  }
+  
+  &__title-wrap {
+    text-align: center;
+  }
+
+  &__title {
+    .line-for-title();
+    margin-top: 10px;
+    margin-bottom: 0;
+    font-size: 21px;
+  }
+
+  &__text {
+    padding: 0 10px;
+  }
+}
+
+
+@media @tablet {
+  .who-am-i {
+    &__title {
+      font-size: 30px;
+    }
+
+    &__icon-autor-photo {
+      height: 300px;
+    }
+
+    &__text {
+      padding: 0 80px;
+    }
+  }
+}
+
+
+@media @laptop {
+  .who-am-i {
+    width: 50%;
+    // max-height: 100vh;
+
+    &__autor-photo {
+      padding-top: 25px;
+    }
+
+    &__icon-autor-photo {
+      height: 400px;  
+    }
+
+    &__title {
+      font-size: 35px;
+    }
+
+    &__text {
+      padding: 0 40px;
+    }
+  }
+}

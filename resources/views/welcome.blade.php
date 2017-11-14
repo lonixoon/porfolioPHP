@@ -3,8 +3,8 @@
 <head>
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
-    <link href="{{ asset('css/styles.min.css') }}" rel="stylesheet"/>
-    <script src="{{ asset('lib/jquery-3.2.1.slim.min.js') }}"></script>
+    <link href="{{ asset('css/main.css') }}" rel="stylesheet"/>
+    <script src="{{ asset('lib/jquery-3.2.1.min.js') }}"></script>
     <title>Портфолио</title>
 </head>
 <body class="page page--index">
@@ -21,14 +21,14 @@
     </div>
     @if (Route::has('login'))
         @auth
-        <a class="authorization-btn btn btn--login" href="{{ url('/admin/work') }}">Администрирование</a>
-        <a href="{{ route('logout') }}" class="authorization-btn btn btn--login"
+        <a class="authorization-btn authorization-btn--admin  btn btn--login" href="{{ url('/admin/work') }}">Администрирование</a>
+        <a href="{{ route('logout') }}" class="authorization-btn authorization-btn--logout btn btn--login"
            onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Выход</a>
         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
             {{ csrf_field() }}
         </form>
     @else
-        <a class="authorization-btn btn btn--login" href="{{ url('/admin/work') }}">Авторизоваться</a>
+        <a class="authorization-btn authorization-btn--auth btn btn--login" href="{{ url('/admin/work') }}">Авторизоваться</a>
         @endauth
     @endif
     <div class="flip">
@@ -128,6 +128,6 @@
         </div>
     </div>
 </header>
-<script src="{{ asset('js/main.min.js') }}"></script>
+<script src="{{ asset('js/main.js') }}"></script>
 </body>
 </html>

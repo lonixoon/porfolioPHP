@@ -7,7 +7,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <link href="{{ asset('css/styles.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/main.css') }}" rel="stylesheet">
     <script src="{{ asset('lib/jquery-3.2.1.min.js') }}"></script>
     <title>{{ config('app.name', 'Портфолио') }}</title>
 </head>
@@ -30,18 +30,21 @@
                     <svg class="social__icon">
                         <use xlink:href="#icon-vk"></use>
                     </svg>
-                </a></li>
+                </a>
+            </li>
             <li class="social__item"><a href="https://github.com/lonixoon" target="_blank"
                                         class="social__link social__link--gh">Гитхаб
                     <svg class="social__icon">
                         <use xlink:href="#icon-github"></use>
                     </svg>
-                </a></li>
+                </a>
+            </li>
             <li class="social__item"><a href="#" class="social__link social__link--in">Ин
                     <svg class="social__icon">
                         <use xlink:href="#icon-in"></use>
                     </svg>
-                </a></li>
+                </a>
+            </li>
         </ul>
     </div>
     <nav class="main-nav main-nav--inner-page">
@@ -55,8 +58,9 @@
     </nav>
     <div class="author author--inner-page">
         <div class="author__inner-page-wrap">
-            <img src="img/my_photo.jpg" alt="Сойнво Алексей" class="author__photo">
-            @yield('author')
+            <img src="{{ asset('img/bg/my_photo.jpg') }}" alt="Сойнво Алексей" class="author__photo">
+            <p class="author__name">Сойнов Алексей</p>
+            <p class="author__title">Личный сайт веб разработчика</p>
         </div>
     </div>
     <a href="#main" class="arrow-down arrow-down">
@@ -115,6 +119,6 @@
         <p class="about-footer__text">Свёрстано мной.</p>
     </div>
 </footer>
-<script src="{{ asset('js/main.min.js') }}"></script>
+<script src="{{ asset('js/main.js') }}"></script>
 </body>
 </html>

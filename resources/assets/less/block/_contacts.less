@@ -1,0 +1,90 @@
+.contacts {
+  position: relative;
+  background-color: #fff;
+  width: 100%;
+  padding-bottom: 80px;
+  
+  // &__map {
+  //   display: none;
+  // }
+
+  &__title-wrap {
+    text-align: center;
+  }
+
+  &__title {
+    .line-for-title();
+    line-height: 1;
+    font-size: 35px;
+    margin-top: 30px;
+    margin-bottom: 0;
+  }
+
+  &__body {
+    padding: 0 10px;
+  }
+
+  &__item {
+    position: relative;
+    padding-left: 35px;
+  	font-size: 16px;
+
+  }
+
+  &__icon {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 25px;
+    height: 25px;
+    fill: @green;
+  }
+}
+
+
+@media @tablet {
+  .contacts {
+    display: flex;
+    height: 650px;
+    background: url(../img/bg/map-desktop.jpg) no-repeat;
+    padding-bottom: 0;
+
+    // &__map {
+    //   display: flex;
+    //   position: absolute;
+    //   width: 100%;
+    //   height: 100%;
+    //   z-index: 0;
+    // }
+
+    &__wrap {
+      align-self: center;
+      position: relative;
+      left: 50%;
+      margin-left: -190px;
+      width: 380px;
+      height: 260px;
+      border-radius: 5px;
+      background-color: fade(#fff, 80%);
+      z-index: 10;
+    }
+
+    &__body {
+      padding: 0 40px;
+    }
+  }
+}
+
+
+@media @laptop {
+  .contacts {
+    height: 80vh;
+  }
+}
+
+
+@media @desktop {
+  .contacts {
+    padding-bottom: 80px;
+  }
+}

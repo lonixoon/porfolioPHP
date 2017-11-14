@@ -1,0 +1,74 @@
+.admin-my-work {
+
+  &__add {
+    font-size: 17px;
+    font-weight: 700;
+  }
+
+  &__form {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__text {
+    padding: 15px;
+    border: none;
+    border-radius: 5px;
+    margin-bottom: 20px;
+
+    &--textarea {
+      height: 250px;
+      margin-bottom: 30px;
+    }
+  }
+
+  &__attachment {
+    margin: 15px auto 25px 35px;
+    padding: 5px;
+    color: @green;
+    cursor: pointer;
+    transition: color 400ms;
+
+    &:hover {
+      color: @green-dark;
+    }
+  }
+
+  &__btn {
+    margin-left: 0;
+  }
+
+  input[type="file"] {
+    display: none;
+  }
+}
+
+
+
+@media @tablet {
+  .admin-my-work {
+    &__text {
+      width: 300px;
+    }
+  }
+}
+
+
+@media @laptop {
+  .admin-blog {
+
+    &__text {
+      width: 350px;
+    }
+  }
+}
+
+
+@media @desktop {
+  .admin-blog {
+
+    &__text {
+      width: 400px;
+    }
+  }
+}

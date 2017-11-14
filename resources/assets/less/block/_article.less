@@ -1,0 +1,35 @@
+.article {
+
+  &__title {
+    margin-top: 20px;
+    margin-bottom: 10px;
+    font-size: 21px;
+  }
+
+  &__time {
+    line-height: 1;
+    color: @green;
+  }
+
+  &__body {
+    margin-bottom: 0;
+  }
+}
+
+
+@media @tablet {
+  .article {
+    &__title {
+      font-size: 28px;
+    }
+  }
+}
+
+
+@media @laptop {
+  .article {
+    &__title {
+      font-size: 36px;
+    }
+  }
+}

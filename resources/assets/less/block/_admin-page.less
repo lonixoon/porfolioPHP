@@ -1,0 +1,41 @@
+.admin-page {
+
+  h1,h2,h3 {
+    font-family: "Roboto";
+  }
+
+  &__main {
+    padding: 20px 10px;
+    min-height: 100vh;
+    background: linear-gradient(fade(#fff, 75%) 100%),
+                url(../img/bg-tablet.jpg) no-repeat 50% -90px;
+  }
+
+  &__title {
+    margin-top: 0;
+    font-size: 24px;
+    font-weight: 500;
+  }
+}
+
+
+@media @tablet {
+  .admin-page {
+
+    &__main {
+      padding: 30px;
+    }
+  }
+}
+
+
+@media @desktop {
+  .admin-page {
+
+    &__main {
+      background: linear-gradient(fade(#fff, 75%) 100%),
+                  url(../img/bg-desktop.jpg) no-repeat 50% -90px;
+    }
+    
+  }
+}

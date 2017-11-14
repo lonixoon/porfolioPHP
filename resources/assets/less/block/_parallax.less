@@ -1,0 +1,23 @@
+.parallax {
+  display: none;
+}
+
+
+@media @laptop {
+  .parallax {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    overflow: hidden;
+
+    &__layer {
+      position: absolute;
+      width: 110%;
+      height: 110%;
+      left: -5%;
+    }
+  }
+}

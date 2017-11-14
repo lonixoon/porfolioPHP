@@ -1,0 +1,80 @@
+.form {
+  display: flex;
+  flex-direction: column;
+
+  width: 300px;
+  margin: auto;
+  
+  border-radius: 5px;
+  overflow: hidden;
+
+  background-color:  fade(#fff, 70%);
+  border:  1px solid fade(@green, 30%);
+
+  &__title-wrap {
+    text-align: center;
+  }
+
+  &__title {
+    .line-for-title();
+    font-size: 21px;
+  }
+
+  &__body {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    padding-top: 0;
+  }
+
+  &__text {
+    width: 260px;
+    width: 100%;
+    padding: 15px;
+    margin-bottom: 20px;
+    border: none;
+    border-radius: 5px;
+
+    border: 1px solid #ccc;
+
+    &--textarea {
+      height: 150px;
+    }
+
+    &--email:required:valid {
+      border: 1px solid red;
+    }
+  }
+
+  &__bottom {
+    display: flex;
+  }
+}
+
+
+@media @tablet {
+  .form {
+    width: 348px;
+
+    &__title {
+      font-size: 30px;
+    }
+  }
+}
+
+@media @laptop {
+  .form {
+    width: 380px;
+
+    &__title {
+      font-size: 35px;
+    }
+  }
+}
+
+
+@media @desktop {
+  .form {
+    width: 430px;
+  }
+}

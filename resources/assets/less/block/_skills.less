@@ -1,0 +1,193 @@
+.skills {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 10px;
+  background-color: #eeebdf;
+
+  &__title-wrap {
+    text-align: center;
+  }
+
+  &__title {
+    .line-for-title();
+    margin-top: 15px;
+    margin-bottom: 0;
+    font-size: 21px;
+  }
+
+  &__list {
+    list-style: none;
+    padding: 0;
+  }
+
+  &__type  {
+    margin: 15px 0 10px 0;
+    font-weight: 500;
+  }
+
+  &__item {
+    font-size: 21px;
+    text-align: center;
+  }
+
+  &__inner-list {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    padding: 0;
+    list-style: none;
+  }
+
+  &__inner-item {
+    position: relative;
+    display: flex;
+    margin: 0 16px 15px 16px;
+    font-size: 14px;
+    color: @green;
+  }
+
+  &__name {
+    display: inline-flex;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  &__circle {
+    transform: rotate(-90deg);
+    width: 110px;
+    height: 110px;
+    fill: none;
+    stroke-width: 20px;
+
+    &--gray {
+      stroke: #ccc;
+      circle {
+        stroke-dasharray: @skill;
+      }
+    }
+
+    &--green {
+      stroke: @green;
+      transition: stroke-dasharray 2000ms;
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+
+    &--html {
+      stroke-dasharray: @skill-fill*70 @skill;
+    }
+
+    &--css {
+      stroke-dasharray: @skill-fill*65 @skill;
+    }
+
+    &--js {
+      stroke-dasharray: @skill-fill*35 @skill;
+    }
+
+    &--php {
+      stroke-dasharray: @skill-fill*20 @skill;
+    }
+
+    &--sql {
+      stroke-dasharray: @skill-fill*15 @skill;
+    }
+
+    &--node {
+      stroke-dasharray: @skill-fill*15 @skill;
+    }
+
+    &--mongo {
+      stroke-dasharray: @skill-fill*15 @skill;
+    }
+
+    &--git {
+      stroke-dasharray: @skill-fill*25 @skill;
+    }
+
+    &--gulp {
+      stroke-dasharray: @skill-fill*15 @skill;
+    }
+
+    &--bower {
+      stroke-dasharray: @skill-fill*15 @skill;
+    }
+  }
+}
+
+
+@media @tablet {
+  .skills {
+    padding: 0;
+
+    &__title {
+      font-size: 30px;
+    }
+
+    &__text {
+      padding: 0 80px;
+    }
+  }
+}
+
+
+@media @laptop {
+  .skills {
+    width: 50%;
+    align-items: flex-start;
+
+    &__title-wrap {
+      align-self: center;
+    }
+
+    &__title {
+      font-size: 35px;
+
+      br {
+        display: none;
+      }
+    }
+
+    &__text {
+      padding: 0 40px;
+    }
+
+    &__type {
+      text-align: left;
+      margin-top: 0;
+      padding-left: 40px;
+      font-size: 28px;
+    }
+
+    &__list {
+      margin-top: 0;
+    }
+
+    &__inner-list {
+      padding: 0 25px;
+      justify-content: flex-start;
+    }
+
+    &__inner-item {
+      margin: 0 13px 15px 13px;
+
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+  }
+}
+
+
+@media @desktop {
+  .skills {
+
+    &__inner-item {
+      margin: 0 16px 15px 16px;
+    }
+  }
+}

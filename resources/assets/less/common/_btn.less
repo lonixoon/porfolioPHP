@@ -1,0 +1,75 @@
+.btn {
+	display: inline-block;
+	text-align: center;
+
+	padding: 10px 20px;
+	margin: 0 auto;
+
+	border: 0;
+	border-radius: 5px;
+	outline: none;
+
+	font-family: inherit;
+	line-height: 1.4;
+	font-size: 14px;
+	font-weight: 500;
+
+	color: #FFF;
+
+	text-decoration: none;
+	cursor: pointer;
+
+	transition: background-color 800ms, color 800ms;
+
+	// &:hover {
+	//   text-decoration: underline;
+	// }
+
+	&--green {
+		background: @green;
+
+		&:hover {
+			background: @green-dark;
+		}
+
+		&:active {
+			background: fade(@green-darker, 80%);
+			background: @green-darker;
+		}
+	}
+
+	&--main-nav {
+		padding-top: 12.5px;
+		padding-bottom: 12.5px;
+		width: 100%;
+		border-radius: 0px;
+	}
+
+	&--authorization {
+		padding-top: 12.5px;
+		padding-bottom: 12.5px;
+		width: 50%;
+		border-radius: 0px;
+		margin-right: 1px;
+
+		&:last-child {
+			margin-right: 0px;
+		}
+	}
+
+	&--login {
+		border: 1px solid #fff;
+		text-align: center;
+
+		&:hover {
+			color: @green;
+			background-color: #fff;
+		}
+	}
+}
+
+@media @tablet {
+	.btn {
+		font-size: 16px;
+	}
+}
