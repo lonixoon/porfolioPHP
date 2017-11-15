@@ -10,7 +10,7 @@
 @section('content')
     <section class="about">
         <article class="who-am-i">
-            <div class="who-am-i__autor-photo">
+            <div class="who-am-i__author-photo">
                 @include('user.about.include.author-photo')
             </div>
             <div class="who-am-i__title-wrap">

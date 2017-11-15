@@ -15,6 +15,16 @@ class CreateAboutsTable extends Migration
     {
         Schema::create('abouts', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('html5');
+            $table->integer('css3');
+            $table->integer('js');
+            $table->integer('php');
+            $table->integer('mysql');
+            $table->integer('nodejs');
+            $table->integer('mongodb');
+            $table->integer('git');
+            $table->integer('gulp');
+            $table->integer('bower');
             $table->timestamps();
         });
     }

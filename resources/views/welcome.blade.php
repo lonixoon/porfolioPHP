@@ -21,14 +21,14 @@
     </div>
     @if (Route::has('login'))
         @auth
-        <a class="authorization-btn authorization-btn--admin  btn btn--login" href="{{ url('/admin/work') }}">Администрирование</a>
+        <a class="authorization-btn authorization-btn--admin  btn btn--login" href="{{ url('/admin/about') }}">Администрирование</a>
         <a href="{{ route('logout') }}" class="authorization-btn authorization-btn--logout btn btn--login"
            onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Выход</a>
         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
             {{ csrf_field() }}
         </form>
     @else
-        <a class="authorization-btn authorization-btn--auth btn btn--login" href="{{ url('/admin/work') }}">Авторизоваться</a>
+        <a class="authorization-btn authorization-btn--auth btn btn--login" href="{{ url('/') }}">Авторизоваться</a>
         @endauth
     @endif
     <div class="flip">

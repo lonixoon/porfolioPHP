@@ -10,4 +10,9 @@ class AboutController extends Controller
     {
         return view('user.about.about');
     }
+
+    public function indexAdmin()
+    {
+        return view('admin.about.about');
+    }
 }

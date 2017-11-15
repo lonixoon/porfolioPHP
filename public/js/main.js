@@ -1,323 +1,54 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
-doc = document;
+/**
+ * Created by RUS9211689 on 15.11.2017.
+ */
 ////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////
-//////////////  local storage для SVG  /////////////////////////////////
-(function () {
-    var request = new XMLHttpRequest();
+//////////////  Отрисовка СВГ SVG по времени  //////////////////////////
+//////////////  (положение экрана отслеживается)  //////////////////////
+module.exports = (function () {
+    $(window).scroll(function () {
+        let svg = $('.who-am-i__icon-author-photo'); // ищем изображение
+        // if (window.location.toString().indexOf('/about') > 0) {
 
-    request.open('GET', './svg/symbol_sprite.html', true);
+        if (svg.length > 0) {
 
-    request.onload = function() {
+            let
+                wScroll = $(window).scrollTop(), // слежение скрола от верха документа
 
-        if (request.status >= 200 && request.status < 400 ) {
-            var node = doc.createElement("div");
-
-            node.innerHTML = request.responseText;
-            doc.body.insertBefore(node, doc.body.firstChild);
-
-            localStorage.setItem( 'inlineSVGdata',  request.responseText );
-        }
-    };
-
-    request.send();
-})();
+                svgPath = $(svg).find('.who-am-i__icon-author-photo-body'), // ищем группы в нашем изображении
+                svgPos = svg.offset().top, // отслеживаем положение svg от верха страницы
+                windowMargin = $(window).height() / 2, // задаём запас что бы анимация начаналась заранее, когда останится пол окна
+                startAnimate = Math.ceil(wScroll - svgPos + windowMargin); //выставляем точку начала анимации - от общего скрола отнимем позицию картинки и прибавим пол страницы
 
 
-////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////
-//////////////  Открывашка для главного меню  //////////////////////////
-(function() {
-    var menuToggle = doc.querySelector('.main-nav__toggle'),
-        menuClosed = doc.querySelector('.main-nav__list');
+            // if (startAnimate > 0) { // старт анимации если мы докрутили до нужного места
+            //     // console.log('start', startAnimate);
+            //     svgPath.stop().animate(
+            //         {
+            //             'stroke-dashoffset' : '0'
+            //         },
 
-    if (menuToggle) {
-        menuToggle.addEventListener('click', function (event) {
-            event.preventDefault();
-            menuClosed.classList.toggle('main-nav__list--opened');
-            menuToggle.classList.toggle('main-nav__toggle--active');
-        });
-    }
+            //         3500,
 
-    window.addEventListener('keydown', function(event) {
-        if (event.keyCode === 27) {
-            menuClosed.classList.remove('main-nav__list--opened');
-            menuToggle.classList.toggle('main-nav__toggle--active');
-        }
-    });
-})();
+            //         'linear',
 
+            //         function () {
+            //             console.log('Конец анимации');
+            //         }
+            //     );
+            if (startAnimate > 0) { // старт анимации если мы докрутили до нужного места
+                svgPath.css({
+                    'stroke-dashoffset': '0'
+                });
 
-////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////
-//////////////  Слайдер  ///////////////////////////////////////////////
-// var sliderItem1 = doc.querySelector('.my-work__item1'),
-//     sliderItem2 = doc.querySelector('.my-work__item2'),
-//     sliderItem3 = doc.querySelector('.my-work__item3'),
-//     nextSlideItem1 = doc.querySelector('.slider__next--barbershop'),
-//     backSlideItem1 = doc.querySelector('.slider__back--nerds'),
-//     nextSlideItem2 = doc.querySelector('.slider__next--nerds'),
-//     backSlideItem2 = doc.querySelector('.slider__back--sedona'),
-//     nextSlideItem3 = doc.querySelector('.slider__next--sedona'),
-//     backSlideItem3 = doc.querySelector('.slider__back--barbershop'),
-//     show = ('my-work__item--show');
-
-// if (nextSlideItem1) {
-//     nextSlideItem1.addEventListener('click', function (event) {
-//         event.preventDefault();
-//         sliderItem1.classList.remove(show);
-//         sliderItem2.classList.add(show);
-//         sliderItem3.classList.remove(show);
-//     });
-
-//     backSlideItem1.addEventListener('click', function (event) {
-//         event.preventDefault();
-//         sliderItem1.classList.remove(show);
-//         sliderItem2.classList.remove(show);
-//         sliderItem3.classList.add(show);
-//     });
-
-//     nextSlideItem2.addEventListener('click', function (event) {
-//         event.preventDefault();
-//         sliderItem1.classList.remove(show);
-//         sliderItem2.classList.remove(show);
-//         sliderItem3.classList.add(show);
-//     });
-
-//     backSlideItem2.addEventListener('click', function (event) {
-//         event.preventDefault();
-//         sliderItem1.classList.add(show);
-//         sliderItem2.classList.remove(show);
-//         sliderItem3.classList.remove(show);
-//     });
-
-//     nextSlideItem3.addEventListener('click', function (event) {
-//         event.preventDefault();
-//         sliderItem1.classList.add(show);
-//         sliderItem2.classList.remove(show);
-//         sliderItem3.classList.remove(show);
-//     });
-
-//     backSlideItem3.addEventListener('click', function (event) {
-//         event.preventDefault();
-//         sliderItem1.classList.remove(show);
-//         sliderItem2.classList.add(show);
-//         sliderItem3.classList.remove(show);
-//     });
-// }
-// Новый варинт сладера:
-(function() {
-    var
-        slides = doc.querySelectorAll('.my-work__list .my-work__item'), // ищем все слайды
-        currentSlide = 0,
-        next = doc.querySelectorAll('.slider__next'), // ищем кнопки next на всех слайдах
-        back = doc.querySelectorAll('.slider__back'); // ищем кнопки back на всех слайдах
-
-    if (slides.length > 0) {
-       var slideInterval = setInterval(backSlide, 5000); // делаем слайд шоу (если требуется)
-    }
-
-
-    function nextSlide() { // перелистываение сладера вперед
-        goToSlide(currentSlide + 1);
-    }
-
-    function backSlide() { // перелистываение сладера назад
-        goToSlide(currentSlide - 1);
-    }
-
-    function goToSlide(n) { // функция перехода на другйо слайд
-        slides[currentSlide].className = 'my-work__item'; // убераем первому слайду класс "my-work__item--show"
-        currentSlide = (n + slides.length) % slides.length; // вычисляем номер следующего элемента массива
-        slides[currentSlide].className = 'my-work__item my-work__item--show'; // добавляем ему класс "my-work__item--show"
-    }
-
-    for (var i = 0; i < next.length; i++) {
-        next[i].addEventListener('click', function() {
-            nextSlide();
-        });
-    }
-
-    for (var i = 0; i < back.length; i++) {
-        back[i].addEventListener('click', function() {
-            backSlide();
-        });
-    }
-})();
-
-// Финкция клика  через JQuery без использования цикла
-// $(next).click(function() { // добавляем в дейсвие по клику вызов функции перелистывания слайда вперед
-//     nextSlide();
-// });
-
-// $(back).click(function() { // добавляем в дейсвие по клику вызов функции перелистывания слайда назад
-//     backSlide();
-// });
-
-
-////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////
-//////////////  Валидация формы  ///////////////////////////////////////
-// var formElemen = doc.querySelector(".feedback__form");
-
-////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////
-//////////////  Визуализация пред загрузки страницы  ///////////////////
-
-// window.addEventListener('load', function() {
-//     // console.log("Cтраница полностью готова");
-//     $('.page__header, .page__main, .page__footer').css('display', 'flex');
-//     $('.preloader').hide();
-// });
-
-////////////////////////////////////////////////////////////////////////
-////////////// Визуализация пред загрузки страницы /////////////////////
-////////////// с отслеживаеним объектов ////////////////////////////////
-
-// $(doc).ready(function () {
-
-//     $(function () {
-//         var imgs = []; // выводим адрес изображений в виде массива
-
-//         $.each($('*'), function () { // цикл поиска всех элементов на странице
-//             var $this = $(this),
-//                 background = $this.css('background-image'), // ищем в css фоны всех элементов (включая элементы у которых фон none)
-//                 img = $this.is('img'); // проверяем на соответствия элемента тегу img
-
-//             if (background !='none') { // если фон не равен none то
-//                 var path = background.replace('url("', ''). replace('")', ''); // убираем лишние символы
-
-//                 imgs.push(path); // и сохраняем в массив
-//             }
-
-//             if (img) { 
-//                 var path = $this.attr('src'); // если элемент изображение, сохраняем его отрибут src
-
-//                 if (path) {
-//                     imgs.push(path); // если scr не пустой, сохраняем в массив
-//                 }
-//             }
-//         });
-
-//         var percent = 1;
-
-//         for (var i = 0; i < imgs.length; i++) { // цикл для который проходит по массиву imgs
-//             var image = $('<img>', { // создаём картинку
-//                 attr: { // передаём атрибуты
-//                     src : imgs[i]
-//                 }
-//             });
-
-//             image.on('load', function() { // обработчик загрузки
-//                 setPercent(imgs.length, percent); // изменяем ширину в соответствии с %
-//                 percent++; // запускаем цикл
-//             });
-//         }
-
-//         function setPercent(total, curent) { // считаем проценты загрузки
-//             var percent = Math.ceil(curent / total * 100); // формула для расчёта процентов(Math.ceil округляет до целого в большую сторону)
-
-//             if (percent >=100) {
-//                 $('.page__header').css('display', 'flex');
-//                 $('.page__main').css('display', 'flex');
-//                 $('.page__footer').css('display', 'flex');
-//                 $('.preloader').hide();
-//             }
-
-//             $('.preloader__bar').css({ // выбираем элемент прелодер
-//                 // 'width' : percent + '%' // меняем значение шири на получившийся %
-//             }).text(percent + '%'); // выводим % в тексте
-//         }
-//     });
-// });
-
-
-////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////
-//////////////  mouse parallax  ////////////////////////////////////////
-(function () {
-    $(doc).ready(function () {
-    
-        var layer = $('.parallax').find('.parallax__layer--mouse'); // Выбираем все дивы parallax__layers в parallax
-
-        $(window).on('mousemove', function (e) {
-            var 
-                mouse_dx = (e.pageX), // Узнаём положение мышки по Х
-                mouse_dy = (e.pageY), // Узнаём положение мышки по У
-                // Т.к. мы делим экран на четыре части что бы в центре оказалась точка координат 0, то нам надо знать когда у нас будет -Х и +Х, -Y и +Y
-                w05 = (window.innerWidth / 2), // делим экран по х
-                h05 = (window.innerHeight / 2), // делим экран по y
-                w = w05 - mouse_dx, // Вычисляем для x перемещения
-                h = h05 - mouse_dy; // Вычисляем для y перемещения
-
-            layer.map(function (key, value) { // Проходимся по всем элементам объекта (дивам .parallax__layers)
-                var 
-                    // bottomPosition = (h05 * (key / 100)), // Вычисляем на сколько нам надо опустить вниз наш слой что бы при перемещении по Y не видно было краев
-                    widthPosition = w * (key / 100), // Вычисляем коофицент смешения по X
-                    heightPosition = h * (key / 100); // Вычисляем коофицент смешения по Y
-
-                    $(value).css({
-                        // 'bottom': '-' + bottomPosition + 'px', // выставляем bottom (т.к. картинка с запасом по низу выравнивание не требуется)
-                        'transform': 'translate3d(' + widthPosition + 'px, ' + heightPosition + 'px, 0)', // Используем translate3d для более лучшего рендеринга на странице
-                    });
-            });
-        });
-    });
-})();
-
-
-////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////
-//////////////  scroll parallax праллакс по скроллу  ///////////////////
-// $(window).scroll(function() {
-//     var wScroll = $(window).scrollTop(), // вычисляем растояние от верха страницы
-//         layer = $('.parallax').find('.parallax__layer--scroll'); // Выбираем все дивы parallax__layers в parallax
-
-//     layer.map(function (key, value) { // Проходимся по всем элементам объекта (дивам .parallax__layers)
-//         var 
-//             // bottomPosition = (key / 14), // Вычисляем на сколько нам надо опустить вниз наш слой что бы при перемещении по Y не видно было краев
-//             scrollPosition = wScroll * (key / 14); // Вычисляем коофицент смешения по Y
-
-//             $(value).css({
-//                 'transform': 'translate3d(0, ' + scrollPosition + 'px, 0)', // Используем translate3d для более лучшего рендеринга на странице
-//             });
-
-//             if (scrollPosition > 400) { // если картинка заканчивается
-//                 $(value).css({
-//                     // 'bottom': '-' + bottomPosition + 'px', // выставляем bottom (т.к. картинка с запасом по низу выравнивание не требуется)
-//                     'transform': 'translate3d(0, 400px, 0)', // ограничим прокрутку
-//                 });
-//             }
-//     });
-// });
-
-////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////
-//////////////  Плавный скролл scroll до элемента страницы  ///////////////////
-(function () {
-    $('a[href^="#"]').bind('click.smoothscroll', function(e) {  // ищем все ссылки с адресом # 
-                                                                // и вешаем обработчик события которое срабатывает при клике мышкой
-        e.preventDefault(); // отменяем переход по умолчанию
-
-        var target = this.hash,
-            $target = $(target);
-
-        $('html, body').stop().animate(
-
-            {
-                'scrollTop': $target.offset().top // позиция элемента от верха страницы
-            },
-
-            500, // время анимации
-
-            'swing',
-
-            function() {
-                window.location.hash = target;
+            } else {
+                svgPath.css({
+                    'stroke-dashoffset': '600'
+                });
             }
-        );
+        }
     });
-})();
+});
 
 
 ////////////////////////////////////////////////////////////////////////
@@ -327,10 +58,10 @@ doc = document;
 
 //     if (window.location.toString().indexOf('about.htm') > 0) {
 
-//         var
+//         let
 //             wScroll = $(window).scrollTop(), // слежение скрола от верха документа
-//             svg = $('.who-am-i__icon-autor-photo'), // ищем изображение
-//             svgPath = $(svg).find('.who-am-i__icon-autor-photo-body'), // ищем группы в нашем изображении
+//             svg = $('.who-am-i__icon-author-photo'), // ищем изображение
+//             svgPath = $(svg).find('.who-am-i__icon-author-photo-body'), // ищем группы в нашем изображении
 //             svgPos = svg.offset().top, // отслеживаем положение svg от верха страницы
 //             windowMargin = $(window).height() / 1.5, // задаём запас что бы анимация начаналась заранее, когда останится пол окна
 //             startAnimate = Math.ceil(wScroll - svgPos + windowMargin), //выставляем точку начала анимации - от общего скрола отнимем позицию картинки и прибавим пол страницы
@@ -357,144 +88,282 @@ doc = document;
 //         }
 //     }
 // });
-
-
-////////////////////////////////////////////////////////////////////////
-//////////////  Отрисовка СВГ SVG по времени  //////////////////////////
-//////////////  (положение экрана отслеживается)  //////////////////////
-(function () {
-    $(window).scroll(function() {
-
-        if (window.location.toString().indexOf('about.htm') > 0) {
-
-            var
-                wScroll = $(window).scrollTop(), // слежение скрола от верха документа
-                svg = $('.who-am-i__icon-autor-photo'), // ищем изображение
-                svgPath = $(svg).find('.who-am-i__icon-autor-photo-body'), // ищем группы в нашем изображении
-                svgPos = svg.offset().top, // отслеживаем положение svg от верха страницы
-                windowMargin = $(window).height() / 2, // задаём запас что бы анимация начаналась заранее, когда останится пол окна
-                startAnimate = Math.ceil(wScroll - svgPos + windowMargin); //выставляем точку начала анимации - от общего скрола отнимем позицию картинки и прибавим пол страницы
-
-                
-
-            // if (startAnimate > 0) { // старт анимации если мы докрутили до нужного места
-            //     // console.log('start', startAnimate);
-            //     svgPath.stop().animate(
-            //         {
-            //             'stroke-dashoffset' : '0'
-            //         },
-
-            //         3500,
-
-            //         'linear',
-
-            //         function () {
-            //             console.log('Конец анимации');
-            //         }
-            //     );
-            if (startAnimate > 0) { // старт анимации если мы докрутили до нужного места
-                svgPath.css({
-                    'stroke-dashoffset' : '0'
-                });
-
-            } else {
-                svgPath.css({
-                    'stroke-dashoffset' : '600'
-                });
-            }
-        }
-    });
-})();
-
-
+},{}],2:[function(require,module,exports){
+/**
+ * Created by RUS9211689 on 15.11.2017.
+ */
 ////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////
 //////////////  Залисвка скилов skill fill  ////////////////////////////
 
-// $(window).scroll(function() { // отслеживаем скролл
-//     var wScroll = $(window).scrollTop(), // измеряем срок от верха страницы
-//         skills = $('.skills__circle'),
-//         skillsPos = skills.offset().top, // ищем позицию элемента от верха страницы
-//         skillsMargin = $(window).height() / 1.8,  // вводим коэффиицент что бы зарисовка начиналась заранее
-//         startAnimate = Math.ceil(wScroll - skillsPos + skillsMargin); // находим точку начала анимации
+module.exports = (function () {
+    let skills = $('.skills__circle');
 
-//     if (startAnimate > 0) { // условие которое дожно выполнятся для старта анимации
-//         skills.css ({ // изменяем css свойство
-//             'stroke' : '#00bfa5'
-//         });
-//     }
-
-//     else {  // пока условие на старт анимации не выпоняется
-//         skills.css ({ // изменяем css свойство
-//             'stroke' : 'ccc'
-//         });
-//     }
-// });
-(function () {
-    if (window.location.toString().indexOf('about.htm') > 0) {
-
-        $(window).scroll(function() { // отслеживаем скролл
-            var wScroll = $(window).scrollTop(), // измеряем срок от верха страницы
-                skills = $('.skills__circle'),
-                skillsPos = skills.offset().top, // ищем позицию элемента от верха страницы
-                skillsMargin = $(window).height() / 1.8,  // вводим коэффиицент что бы зарисовка начиналась заранее
-                startAnimate = Math.ceil(wScroll - skillsPos + skillsMargin); // находим точку начала анимации
-            if (startAnimate < 0) { // условие которое дожно выполнятся для старта анимации
-                skills.css ({ // изменяем css свойство
-                    'stroke-dasharray' : '0 282.743338824px',
-
-                });
-                
-            } else if (startAnimate > 0) {
-                skills.css ({ // изменяем css свойство
-                    'stroke-dasharray' : '',           
-                });
-            }
+    if (skills.length > 0) {
+        skills.css({ // изменяем css свойство
+            'stroke-dasharray': '0 282.743338824px'
         });
-    }
-})();
 
+    $(window).scroll(function () { // отслеживаем скролл
+        let wScroll = $(window).scrollTop(), // измеряем срок от верха страницы
+            // skills = $('.skills__circle'),
+            skillsPos = skills.offset().top, // ищем позицию элемента от верха страницы
+            skillsMargin = $(window).height() / 1.8,  // вводим коэффиицент что бы зарисовка начиналась заранее
+            startAnimate = Math.ceil(wScroll - skillsPos + skillsMargin); // находим точку начала анимации
 
+        if (startAnimate < 0) { // условие которое дожно выполнятся для старта анимации
+            skills.css({ // изменяем css свойство
+                'stroke-dasharray': '0 282.743338824px'
+            });
+
+        } else if (startAnimate > 0) {
+            skills.css({ // изменяем css свойство
+                'stroke-dasharray': '',
+            });
+        }
+    });
+}
+})
+;
+},{}],3:[function(require,module,exports){
+/**
+ * Created by RUS9211689 on 15.11.2017.
+ */
 ////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////
 ///////////////////////  Флип flip блока  //////////////////////////////
-(function() {
-    var
+module.exports = (function () {
+    let
         loginBtn = doc.querySelector('.authorization-btn--auth'),
         indexBtn = doc.querySelector('.btn--authorization'),
-        autorBlock = doc.querySelector('.flip__front'),
-        loginForm = doc.querySelector('.flip__back');
+        authorBlock = doc.querySelector('.flip__front'),
+        loginForm = doc.querySelector('.flip__back'),
         flipper = ('flip__flipper');
 
     if (loginBtn) {
         loginBtn.addEventListener('click', function (event) {
             event.preventDefault();
-            autorBlock.classList.add(flipper);
+            authorBlock.classList.add(flipper);
             loginForm.classList.remove(flipper);
             $(loginBtn).hide();
         });
 
         indexBtn.addEventListener('click', function (event) {
             event.preventDefault();
-            autorBlock.classList.remove(flipper);
+            authorBlock.classList.remove(flipper);
             loginForm.classList.add(flipper);
             $(loginBtn).show();
         });
     }
-})();
+});
+},{}],4:[function(require,module,exports){
+/**
+ * Created by RUS9211689 on 15.11.2017.
+ */
+////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////
+//////////////  Открывашка для главного меню  //////////////////////////
+module.exports = (function() {
+    let menuToggle = doc.querySelector('.main-nav__toggle'),
+        menuClosed = doc.querySelector('.main-nav__list');
+
+    if (menuToggle) {
+        menuToggle.addEventListener('click', function (event) {
+            event.preventDefault();
+            menuClosed.classList.toggle('main-nav__list--opened');
+            menuToggle.classList.toggle('main-nav__toggle--active');
+        });
+    }
+
+    window.addEventListener('keydown', function(event) {
+        if (event.keyCode === 27) {
+            menuClosed.classList.remove('main-nav__list--opened');
+            menuToggle.classList.toggle('main-nav__toggle--active');
+        }
+    });
+});
+},{}],5:[function(require,module,exports){
+/**
+ * Created by RUS9211689 on 15.11.2017.
+ */
+////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////
+//////////////  mouse parallax  ////////////////////////////////////////
+module.exports = (function () {
+    $(doc).ready(function () {
+
+        let layer = $('.parallax').find('.parallax__layer--mouse'); // Выбираем все дивы parallax__layers в parallax
+
+        $(window).on('mousemove', function (e) {
+            let
+                mouse_dx = (e.pageX), // Узнаём положение мышки по Х
+                mouse_dy = (e.pageY), // Узнаём положение мышки по У
+                // Т.к. мы делим экран на четыре части что бы в центре оказалась точка координат 0, то нам надо знать когда у нас будет -Х и +Х, -Y и +Y
+                w05 = (window.innerWidth / 2), // делим экран по х
+                h05 = (window.innerHeight / 2), // делим экран по y
+                w = w05 - mouse_dx, // Вычисляем для x перемещения
+                h = h05 - mouse_dy; // Вычисляем для y перемещения
+
+            layer.map(function (key, value) { // Проходимся по всем элементам объекта (дивам .parallax__layers)
+                let
+                    // bottomPosition = (h05 * (key / 100)), // Вычисляем на сколько нам надо опустить вниз наш слой что бы при перемещении по Y не видно было краев
+                    widthPosition = w * (key / 100), // Вычисляем коофицент смешения по X
+                    heightPosition = h * (key / 100); // Вычисляем коофицент смешения по Y
+
+                $(value).css({
+                    // 'bottom': '-' + bottomPosition + 'px', // выставляем bottom (т.к. картинка с запасом по низу выравнивание не требуется)
+                    'transform': 'translate3d(' + widthPosition + 'px, ' + heightPosition + 'px, 0)', // Используем translate3d для более лучшего рендеринга на странице
+                });
+            });
+        });
+    });
+});
+},{}],6:[function(require,module,exports){
+/**
+ * Created by RUS9211689 on 15.11.2017.
+ */
+////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////
+//////////////  Визуализация пред загрузки страницы  ///////////////////
+
+// module.export = window.addEventListener('load', function() {
+//     // console.log("Cтраница полностью готова");
+//     $('.page__header, .page__main, .page__footer').css('display', 'flex');
+//     $('.preloader').hide();
+// });
+
+////////////////////////////////////////////////////////////////////////
+////////////// Визуализация пред загрузки страницы /////////////////////
+////////////// с отслеживаеним объектов ////////////////////////////////
+
+// module.export = $(doc).ready(function () {
+
+//     $(function () {
+//         let imgs = []; // выводим адрес изображений в виде массива
+
+//         $.each($('*'), function () { // цикл поиска всех элементов на странице
+//             let $this = $(this),
+//                 background = $this.css('background-image'), // ищем в css фоны всех элементов (включая элементы у которых фон none)
+//                 img = $this.is('img'); // проверяем на соответствия элемента тегу img
+
+//             if (background !='none') { // если фон не равен none то
+//                 let path = background.replace('url("', ''). replace('")', ''); // убираем лишние символы
+
+//                 imgs.push(path); // и сохраняем в массив
+//             }
+
+//             if (img) {
+//                 let path = $this.attr('src'); // если элемент изображение, сохраняем его отрибут src
+
+//                 if (path) {
+//                     imgs.push(path); // если scr не пустой, сохраняем в массив
+//                 }
+//             }
+//         });
+
+//         let percent = 1;
+
+//         for (let i = 0; i < imgs.length; i++) { // цикл для который проходит по массиву imgs
+//             let image = $('<img>', { // создаём картинку
+//                 attr: { // передаём атрибуты
+//                     src : imgs[i]
+//                 }
+//             });
+
+//             image.on('load', function() { // обработчик загрузки
+//                 setPercent(imgs.length, percent); // изменяем ширину в соответствии с %
+//                 percent++; // запускаем цикл
+//             });
+//         }
+
+//         function setPercent(total, curent) { // считаем проценты загрузки
+//             let percent = Math.ceil(curent / total * 100); // формула для расчёта процентов(Math.ceil округляет до целого в большую сторону)
+
+//             if (percent >=100) {
+//                 $('.page__header').css('display', 'flex');
+//                 $('.page__main').css('display', 'flex');
+//                 $('.page__footer').css('display', 'flex');
+//                 $('.preloader').hide();
+//             }
+
+//             $('.preloader__bar').css({ // выбираем элемент прелодер
+//                 // 'width' : percent + '%' // меняем значение шири на получившийся %
+//             }).text(percent + '%'); // выводим % в тексте
+//         }
+//     });
+// });
+},{}],7:[function(require,module,exports){
+/**
+ * Created by RUS9211689 on 15.11.2017.
+ */
+////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////
+//////////////  local storage для SVG  /////////////////////////////////
+module.exports = (function () {
+    let request = new XMLHttpRequest();
+
+    request.open('GET', '/svg/symbol_sprite.html', true);
+
+    request.onload = function() {
+
+        if (request.status >= 200 && request.status < 400 ) {
+            let node = doc.createElement("div");
+
+            node.innerHTML = request.responseText;
+            doc.body.insertBefore(node, doc.body.firstChild);
+
+            localStorage.setItem( 'inlineSVGdata',  request.responseText );
+        }
+    };
+
+    request.send();
+});
 
 
+},{}],8:[function(require,module,exports){
+/**
+ * Created by RUS9211689 on 15.11.2017.
+ */
+////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////
+//////////////  scroll parallax праллакс по скроллу  ///////////////////
+// module.exports = $(window).scroll(function() {
+//     let wScroll = $(window).scrollTop(), // вычисляем растояние от верха страницы
+//         layer = $('.parallax').find('.parallax__layer--scroll'); // Выбираем все дивы parallax__layers в parallax
+
+//     layer.map(function (key, value) { // Проходимся по всем элементам объекта (дивам .parallax__layers)
+//         let
+//             // bottomPosition = (key / 14), // Вычисляем на сколько нам надо опустить вниз наш слой что бы при перемещении по Y не видно было краев
+//             scrollPosition = wScroll * (key / 14); // Вычисляем коофицент смешения по Y
+
+//             $(value).css({
+//                 'transform': 'translate3d(0, ' + scrollPosition + 'px, 0)', // Используем translate3d для более лучшего рендеринга на странице
+//             });
+
+//             if (scrollPosition > 400) { // если картинка заканчивается
+//                 $(value).css({
+//                     // 'bottom': '-' + bottomPosition + 'px', // выставляем bottom (т.к. картинка с запасом по низу выравнивание не требуется)
+//                     'transform': 'translate3d(0, 400px, 0)', // ограничим прокрутку
+//                 });
+//             }
+//     });
+// });
+},{}],9:[function(require,module,exports){
+/**
+ * Created by RUS9211689 on 15.11.2017.
+ */
 ////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////
 ///////  Приклеенное боковое меню и анимация сайт бара (sitebar) ///////
-(function() {
+module.exports = (function () {
     $('.page__fixed .page-nav .page-nav__wrap').hide();
 
-    $(window).scroll(function() { // функция отслеживания скрола
+    $(window).scroll(function () { // функция отслеживания скрола
+        let pageBlog = $('.page__blog');
 
-        if ((window.location.toString().indexOf('blog.htm') > 0)) { // находимся на странице Блог
-
-            var
+        // if ((window.location.toString().indexOf('blog') > 0)) { // находимся на странице Блог
+        if (pageBlog.length > 0) {
+            let
                 $this = $(this),
                 wScroll = $(window).scrollTop(),  // проверка на сколько px мы проскролили страницу
                 sidebar = $('.page__static .page-nav__wrap'),
@@ -506,21 +375,23 @@ doc = document;
                 link = $('.page-nav__link');
 
             if ($(window).width() >= 1200) {
+                let pageStatic = $('.page__static'),
+                    pageFixed = $('.page__fixed');
 
                 if (wScroll >= stickyStart) { // если меню ниже чем верх страницы
-                    $('.page__static').addClass('page__fixed');
-                    $('.page__static').removeClass('page__static');
-                
+                    pageStatic.addClass('page__fixed');
+                    pageStatic.removeClass('page__static');
+
                 } else {
-                    $('.page__fixed').addClass('page__static');
-                    $('.page__fixed').removeClass('page__fixed');
+                    pageFixed.addClass('page__static');
+                    pageFixed.removeClass('page__fixed');
                 }
             }
             // делаем циклом проверку, на положение всех заголовков статей, относительно текущего положения экрана
             // и добавляем класс актив ссылки на статью заголовок которой выше чем положение экрана
-            for (var i = 0; i < article.length; i++) {  
-                var articlePos = article.eq(i).offset().top - 30; // определяем местоположение на странице всех заголовков статей и отнимаем 30px для запаса
-                var linkNum = link.eq(i); // определяем все ссылки на статьи
+            for (let i = 0; i < article.length; i++) {
+                let articlePos = article.eq(i).offset().top - 30; // определяем местоположение на странице всех заголовков статей и отнимаем 30px для запаса
+                let linkNum = link.eq(i); // определяем все ссылки на статьи
                 if (articlePos < wScroll) { // делаем проверку на положения экрана и положения заголовков всех статей
                     $(link).removeClass('page-nav__link--active'); // если занчение положения экрана больше (экран ниже) чем текущий заголовок
                     $(linkNum).addClass('page-nav__link--active'); // добавляем ссылке клас актив которая совпадает с номером в массиве article на который находится экран
@@ -528,14 +399,20 @@ doc = document;
             }
         }
     });
-})();
+});
+},{}],10:[function(require,module,exports){
+/**
+ * Created by RUS9211689 on 15.11.2017.
+ */
 ////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////
 ///////  Выезд сайдбара по свайпу для моб версии  //////////////////////
-(function () {
-    if ((window.location.toString().indexOf('blog.htm') > 0) && ($(window).width() < 1200)) {
+module.exports = (function () {
+    let pageBlog = $('.page__blog');
 
-        var
+    if ((pageBlog.length > 0) && ($(window).width() < 1200)) {
+
+        let
             body = $('body'),
             sidebar = $('.page-nav__wrap'),
             toggle = $('.page-nav__toggle'),
@@ -560,10 +437,9 @@ doc = document;
         });
 
 
-
         body.on('touchstart', function (event) {
 
-            var touch = event.originalEvent.touches[0] || event.originalEvent.changedTouches[0];
+            let touch = event.originalEvent.touches[0] || event.originalEvent.changedTouches[0];
             touchStartX = touch.pageX;
 
         });
@@ -571,20 +447,126 @@ doc = document;
 
         body.on('touchend', function (event) {
 
-            var touch = event.originalEvent.touches[0] || event.originalEvent.changedTouches[0];
+            let touch = event.originalEvent.touches[0] || event.originalEvent.changedTouches[0];
             touchEndX = touch.pageX;
 
             if (touchEndX - touchStartX > threshold) {
                 sidebar.addClass('page-nav__wrap--opened');
-                toggle.addClass('page-nav__toggle--opened');        
-            } 
-
-            else if (touchEndX - touchStartX < -threshold) {
+                toggle.addClass('page-nav__toggle--opened');
+            } else if (touchEndX - touchStartX < -threshold) {
                 sidebar.removeClass('page-nav__wrap--opened');
                 toggle.removeClass('page-nav__toggle--opened');
             }
-        });  
+        });
     }
-})();
+});
+},{}],11:[function(require,module,exports){
+/**
+ * Created by RUS9211689 on 15.11.2017.
+ */
+////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////
+//////////////  Слайдер  ///////////////////////////////////////////////
+module.exports = (function() {
+    let
+        slides = doc.querySelectorAll('.my-work__list .my-work__item'), // ищем все слайды
+        currentSlide = 0,
+        next = doc.querySelectorAll('.slider__next'), // ищем кнопки next на всех слайдах
+        back = doc.querySelectorAll('.slider__back'); // ищем кнопки back на всех слайдах
 
-},{}]},{},[1]);
+    // if (slides.length > 0) {
+    //     let slideInterval = setInterval(backSlide, 5000); // делаем слайд шоу (если требуется)
+    // }
+
+
+    function nextSlide() { // перелистываение сладера вперед
+        goToSlide(currentSlide + 1);
+    }
+
+    function backSlide() { // перелистываение сладера назад
+        goToSlide(currentSlide - 1);
+    }
+
+    function goToSlide(n) { // функция перехода на другйо слайд
+        slides[currentSlide].className = 'my-work__item'; // убераем первому слайду класс "my-work__item--show"
+        currentSlide = (n + slides.length) % slides.length; // вычисляем номер следующего элемента массива
+        slides[currentSlide].className = 'my-work__item my-work__item--show'; // добавляем ему класс "my-work__item--show"
+    }
+
+    for (let i = 0; i < next.length; i++) {
+        next[i].addEventListener('click', function() {
+            nextSlide();
+        });
+    }
+
+    for (let i = 0; i < back.length; i++) {
+        back[i].addEventListener('click', function() {
+            backSlide();
+        });
+    }
+});
+},{}],12:[function(require,module,exports){
+/**
+ * Created by RUS9211689 on 15.11.2017.
+ */
+////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////
+//////////////  Плавный скролл scroll до элемента страницы  ///////////////////
+module.exports = (function () {
+    $('a[href^="#"]').bind('click.smoothscroll', function (e) {  // ищем все ссылки с адресом #
+        // и вешаем обработчик события которое срабатывает при клике мышкой
+        e.preventDefault(); // отменяем переход по умолчанию
+
+        let target = this.hash,
+            $target = $(target);
+
+        $('html, body').stop().animate(
+            {
+                'scrollTop': $target.offset().top // позиция элемента от верха страницы
+            },
+
+            500, // время анимации
+
+            'swing',
+
+            function () {
+                window.location.hash = target;
+            }
+        );
+    });
+});
+},{}],13:[function(require,module,exports){
+doc = document;
+let saveSvgToLocalStorageSVG = require('./components/saveSvgToLocalStorageSVG'),
+    mainMenuOpen = require('./components/mainMenuOpen'),
+    slider = require('./components/slider'),
+    preloaderPage = require('./components/preloaderPage'),
+    mouseParallax = require('./components/mouseParallax'),
+    scrollParallax = require('./components/scrollParallax'),
+    smoothScroll = require('./components/smoothScroll'),
+    drawSvgByScroll = require('./components/drawSvgByScroll'),
+    fillSkillByScroll = require('./components/fillSkillByScroll'),
+    flipLoginBlock = require('./components/flipLoginBlock'),
+    sidebarOutput = require('./components/sitebarOutput'),
+    sidebarSticky = require('./components/sidebarSticky');
+
+
+saveSvgToLocalStorageSVG();
+mainMenuOpen();
+slider();
+mouseParallax();
+smoothScroll();
+drawSvgByScroll();
+fillSkillByScroll();
+flipLoginBlock();
+sidebarOutput();
+sidebarSticky();
+
+
+
+
+
+
+
+
+},{"./components/drawSvgByScroll":1,"./components/fillSkillByScroll":2,"./components/flipLoginBlock":3,"./components/mainMenuOpen":4,"./components/mouseParallax":5,"./components/preloaderPage":6,"./components/saveSvgToLocalStorageSVG":7,"./components/scrollParallax":8,"./components/sidebarSticky":9,"./components/sitebarOutput":10,"./components/slider":11,"./components/smoothScroll":12}]},{},[13]);

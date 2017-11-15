@@ -10,4 +10,9 @@ class WorkController extends Controller
     {
         return view('user.work.work');
     }
+
+    public function indexAdmin()
+    {
+        return view('admin.work.work');
+    }
 }

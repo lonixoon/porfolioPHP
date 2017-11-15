@@ -971,7 +971,7 @@ input[type="radio"]:checked + .radio::before {
   color: #fff;
 }
 
-.admin-navbar__ttile {
+.admin-navbar__tile {
   font-family: inherit;
   font-size: 21px;
   color: inherit;
@@ -1450,6 +1450,10 @@ input[type="radio"]:checked + .radio::before {
   border-radius: 5px;
   overflow: hidden;
   background-color: rgba(255, 255, 255, 0.8);
+}
+
+.authorization__wrap--login-page {
+  margin: 0 auto;
 }
 
 .authorization__title-wrap {
@@ -2410,19 +2414,19 @@ input[type="radio"]:checked + .radio::before {
   background-color: #f0eee9;
 }
 
-.who-am-i__autor-photo {
+.who-am-i__author-photo {
   text-align: center;
   padding-top: 15px;
 }
 
-.who-am-i__icon-autor-photo {
+.who-am-i__icon-author-photo {
   fill: none;
   height: 200px;
   stroke: #555555;
   stroke-width: 4px;
 }
 
-.who-am-i__icon-autor-photo-body {
+.who-am-i__icon-author-photo-body {
   stroke-dasharray: 600;
   stroke-dashoffset: 600;
   -webkit-transition: all 3000ms ease-in-out;
@@ -2922,11 +2926,11 @@ input[type="radio"]:checked + .radio::before {
 .admin-page__main {
   padding: 20px 10px;
   min-height: 100vh;
-  background: -webkit-gradient(linear, left top, left bottom, to(rgba(255, 255, 255, 0.75))), url(../img/bg-tablet.jpg) no-repeat 50% -90px;
-  background: -webkit-linear-gradient(rgba(255, 255, 255, 0.75) 100%), url(../img/bg-tablet.jpg) no-repeat 50% -90px;
-  background: -moz-linear-gradient(rgba(255, 255, 255, 0.75) 100%), url(../img/bg-tablet.jpg) no-repeat 50% -90px;
-  background: -o-linear-gradient(rgba(255, 255, 255, 0.75) 100%), url(../img/bg-tablet.jpg) no-repeat 50% -90px;
-  background: linear-gradient(rgba(255, 255, 255, 0.75) 100%), url(../img/bg-tablet.jpg) no-repeat 50% -90px;
+  background: -webkit-gradient(linear, left top, left bottom, to(rgba(255, 255, 255, 0.75))), url(../img/bg/bg-tablet.jpg) no-repeat 50% -90px;
+  background: -webkit-linear-gradient(rgba(255, 255, 255, 0.75) 100%), url(../img/bg/bg-tablet.jpg) no-repeat 50% -90px;
+  background: -moz-linear-gradient(rgba(255, 255, 255, 0.75) 100%), url(../img/bg/bg-tablet.jpg) no-repeat 50% -90px;
+  background: -o-linear-gradient(rgba(255, 255, 255, 0.75) 100%), url(../img/bg/bg-tablet.jpg) no-repeat 50% -90px;
+  background: linear-gradient(rgba(255, 255, 255, 0.75) 100%), url(../img/bg/bg-tablet.jpg) no-repeat 50% -90px;
 }
 
 .admin-page__title {
@@ -3387,7 +3391,7 @@ input[type="radio"]:checked + .radio::before {
     font-size: 30px;
   }
 
-  .who-am-i__icon-autor-photo {
+  .who-am-i__icon-author-photo {
     height: 300px;
   }
 
@@ -3796,11 +3800,11 @@ input[type="radio"]:checked + .radio::before {
     width: 50%;
   }
 
-  .who-am-i__autor-photo {
+  .who-am-i__author-photo {
     padding-top: 25px;
   }
 
-  .who-am-i__icon-autor-photo {
+  .who-am-i__icon-author-photo {
     height: 400px;
   }
 
@@ -4037,11 +4041,11 @@ input[type="radio"]:checked + .radio::before {
   }
 
   .admin-page__main {
-    background: -webkit-gradient(linear, left top, left bottom, to(rgba(255, 255, 255, 0.75))), url(../img/bg-desktop.jpg) no-repeat 50% -90px;
-    background: -webkit-linear-gradient(rgba(255, 255, 255, 0.75) 100%), url(../img/bg-desktop.jpg) no-repeat 50% -90px;
-    background: -moz-linear-gradient(rgba(255, 255, 255, 0.75) 100%), url(../img/bg-desktop.jpg) no-repeat 50% -90px;
-    background: -o-linear-gradient(rgba(255, 255, 255, 0.75) 100%), url(../img/bg-desktop.jpg) no-repeat 50% -90px;
-    background: linear-gradient(rgba(255, 255, 255, 0.75) 100%), url(../img/bg-desktop.jpg) no-repeat 50% -90px;
+    background: -webkit-gradient(linear, left top, left bottom, to(rgba(255, 255, 255, 0.75))), url(../img/bg/bg-desktop.jpg) no-repeat 50% -90px;
+    background: -webkit-linear-gradient(rgba(255, 255, 255, 0.75) 100%), url(../img/bg/bg-desktop.jpg) no-repeat 50% -90px;
+    background: -moz-linear-gradient(rgba(255, 255, 255, 0.75) 100%), url(../img/bg/bg-desktop.jpg) no-repeat 50% -90px;
+    background: -o-linear-gradient(rgba(255, 255, 255, 0.75) 100%), url(../img/bg/bg-desktop.jpg) no-repeat 50% -90px;
+    background: linear-gradient(rgba(255, 255, 255, 0.75) 100%), url(../img/bg/bg-desktop.jpg) no-repeat 50% -90px;
   }
 
   .admin-blog__text {

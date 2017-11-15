@@ -25,11 +25,6 @@
         </div>
         <section class="blog">
             <article id="fish-text" class="blog__item article">
-                @foreach ( $all_post as $value)
-                    <h3 class="article__title">{{ $value->title }}</h3>
-{{--                    <time datetime="{{ $value->updated_at }}" class="article__time">{{ $value->updated_at }}</time>--}}
-                    <div class="article__body">{{ $value->text }}</div>
-                @endforeach
                 <h3 class="article__title">Рыбный текст</h3>
                 <time datetime="2017-06-15" class="article__time">15 июня 2017</time>
                 <div class="article__body">
