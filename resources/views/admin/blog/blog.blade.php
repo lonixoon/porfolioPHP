@@ -12,4 +12,4 @@
             <button type="submit" class="admin-blog__btn btn btn--green">Добавить</button>
         </form>
     </div>
-@stop
+@endsection

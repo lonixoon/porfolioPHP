@@ -21,9 +21,14 @@ Route::get('/', function () {
 Auth::routes();
 
 /* страницы не требующие авторизации */
-Route::get('/work', 'WorkController@index');
-Route::get('/blog', 'BlogController@index');
 Route::get('/about', 'AboutController@index');
+Route::get('/blog', 'BlogController@index');
+Route::get('/work', 'WorkController@index');
+
+/* вывод API */
+Route::get('/api/about', 'AboutController@indexAPI');
+Route::get('/api/blog', 'BlogController@indexAPI');
+Route::get('/api/work', 'WorkController@indexAPI');
 
 /* маршруты требующие авторизацию */
 Route::group(
@@ -34,9 +39,9 @@ Route::group(
     Route::get('/admin/work', 'WorkController@indexAdmin');
 
     /* сохраненение данных */
-    Route::get('/admin/about/save', 'AboutController@save');
-    Route::get('/admin/blog/save', 'BlogController@save');
-    Route::get('/admin/work/save', 'WorkController@save');
+    Route::post('/admin/about/save', 'AboutController@save');
+    Route::post('/admin/blog/save', 'BlogController@save');
+    Route::post('/admin/work/save', 'WorkController@save');
 
 
 //    /* тестовые страницы */

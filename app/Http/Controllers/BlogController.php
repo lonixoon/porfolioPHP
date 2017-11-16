@@ -5,13 +5,14 @@ namespace App\Http\Controllers;
 use App\Blog;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Redirect;
 
 class BlogController extends Controller
 {
     public function index()
     {
         // берём всё содиржимое модели
-        $data['all_post'] = Blog::all();
+        $data['all_article'] = Blog::all();
         return view('user.blog.blog', $data);
     }
 
@@ -36,10 +37,13 @@ class BlogController extends Controller
                 $blog->title = strip_tags($request->title);
                 $blog->text = strip_tags($request->text);
                 // сохраняем в базу для создания id
-                $blog->save();
+                $blog->save();//
             });
+//             перекидываем или выводим страницу блог
+            return redirect()->action('BlogController@index');
+//            $this->index();
         } catch (Exception $exception) {
-            dump($exception->getMessage());
+           $exception->getMessage();
         }
     }
 }

@@ -5,11 +5,10 @@
         <use xlink:href="#icon-about_header"></use>
     </svg>
     <h1 class="page__title">Обо мне</h1>
-@endsection
+@stop
 
 @section('content')
     <section class="about">
-        <div id="skill123"></div>
         <article class="who-am-i">
             <div class="who-am-i__author-photo">
                 @include('user.about.include.author-photo')
@@ -166,4 +165,4 @@
             </div>
         </div>
     </section>
-@endsection
+@stop

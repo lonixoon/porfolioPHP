@@ -5,7 +5,9 @@
 ////////////////////////////////////////////////////////////////////////
 ///////  Приклеенное боковое меню и анимация сайт бара (sitebar) ///////
 module.exports = (function () {
+    let link = $('.page-nav__link');
     $('.page__fixed .page-nav .page-nav__wrap').hide();
+    link.eq(0).addClass('page-nav__link--active');
 
     $(window).scroll(function () { // функция отслеживания скрола
         let pageBlog = $('.page__blog');
@@ -13,15 +15,15 @@ module.exports = (function () {
         // if ((window.location.toString().indexOf('blog') > 0)) { // находимся на странице Блог
         if (pageBlog.length > 0) {
             let
-                $this = $(this),
+                // $this = $(this),
                 wScroll = $(window).scrollTop(),  // проверка на сколько px мы проскролили страницу
-                sidebar = $('.page__static .page-nav__wrap'),
+                // sidebar = $('.page__static .page-nav__wrap'),
                 blog = $('.blog'),
                 article = $('.article__title'),
-                stickyStart = blog.offset().top,  // отслеживаем положение меню от верха страницы
-                fixedSidebar = $('.page__fixed .page-nav'),
-                fixedMenu = fixedSidebar.find('.page-nav__wrap'),
-                link = $('.page-nav__link');
+                stickyStart = blog.offset().top;  // отслеживаем положение меню от верха страницы
+                // fixedSidebar = $('.page__fixed .page-nav'),
+                // fixedMenu = fixedSidebar.find('.page-nav__wrap');
+
 
             if ($(window).width() >= 1200) {
                 let pageStatic = $('.page__static'),

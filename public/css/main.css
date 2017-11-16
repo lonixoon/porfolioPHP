@@ -2635,46 +2635,7 @@ input[type="radio"]:checked + .radio::before {
   position: absolute;
   top: 0;
   left: 0;
-}
-
-.skills__circle--html {
-  stroke-dasharray: 197.92033718px 282.74333882px;
-}
-
-.skills__circle--css {
-  stroke-dasharray: 183.78317024px 282.74333882px;
-}
-
-.skills__circle--js {
-  stroke-dasharray: 98.96016859px 282.74333882px;
-}
-
-.skills__circle--php {
-  stroke-dasharray: 56.54866776px 282.74333882px;
-}
-
-.skills__circle--sql {
-  stroke-dasharray: 42.41150082px 282.74333882px;
-}
-
-.skills__circle--node {
-  stroke-dasharray: 42.41150082px 282.74333882px;
-}
-
-.skills__circle--mongo {
-  stroke-dasharray: 42.41150082px 282.74333882px;
-}
-
-.skills__circle--git {
-  stroke-dasharray: 70.68583471px 282.74333882px;
-}
-
-.skills__circle--gulp {
-  stroke-dasharray: 42.41150082px 282.74333882px;
-}
-
-.skills__circle--bower {
-  stroke-dasharray: 42.41150082px 282.74333882px;
+  stroke-dasharray: 0 282.743338824px;
 }
 
 .contacts {
