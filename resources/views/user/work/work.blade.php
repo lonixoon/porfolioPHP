@@ -10,106 +10,41 @@
 @section('content')
     <section class="my-work">
         <ul class="my-work__list">
-            <li class="my-work__item my-work__item--show">
-                <div class="my-work__img"><img src="{{ asset('img/work/sedona.png') }}" alt="Седона"></div>
-                <div class="my-work__info">
-                    <div class="my-work__subtitle-wrap">
-                        <h3 class="my-work__subtitle">Заповедник Седона в Америке</h3>
+            @foreach ($all_works as $value)
+                <li class="my-work__item">
+                    <div class="my-work__img"><img src="{{ asset($value->photo) }}" alt="{{ $value->name }}"></div>
+                    <div class="my-work__info">
+                        <div class="my-work__subtitle-wrap">
+                            <h3 class="my-work__subtitle">{{ $value->name }}</h3>
+                        </div>
+                        <p class="my-work__technologies">{{ $value->technology }}</p><a
+                                href="#" target="_blank"
+                                class="my-work__btn btn btn--green">Посмотреть сайт
+                            <svg class="my-work__icon-link">
+                                <use xlink:href="#icon-link"></use>
+                            </svg>
+                        </a>
                     </div>
-                    <p class="my-work__technologies">Adaptive HTML, CSS</p><a
-                            href="https://lonixoon.github.io/sedona-adaptive/build/" target="_blank"
-                            class="my-work__btn btn btn--green">Посмотреть сайт
-                        <svg class="my-work__icon-link">
-                            <use xlink:href="#icon-link"></use>
+                    <div class="my-work__other-work">
+                        <svg class="arrow-down__icon arrow-down__icon--right">
+                            <use xlink:href="#icon-arrow_down"></use>
                         </svg>
-                    </a>
-                </div>
-                <div class="my-work__other-work">
-                    <svg class="arrow-down__icon arrow-down__icon--right">
-                        <use xlink:href="#icon-arrow_down"></use>
-                    </svg>
-                    <h4>Просмотр других работ</h4>
-                </div>
-                <div class="my-work__slider slider">
-                    <div class="slider__next slider__next--barbershop">
-                        <svg class="slider__icon-portf_arrow_down">
-                            <use xlink:href="#icon-portf_arrow_down"></use>
-                        </svg>
+                        <h4>Просмотр других работ</h4>
                     </div>
-                    <div class="slider__back slider__back--nerds">
-                        <svg class="slider__icon-portf_arrow_up">
-                            <use xlink:href="#icon-portf_arrow_up"></use>
-                        </svg>
+                    <div class="my-work__slider slider">
+                        <div class="slider__next">
+                            <svg class="slider__icon-portf_arrow_down">
+                                <use xlink:href="#icon-portf_arrow_down"></use>
+                            </svg>
+                        </div>
+                        <div class="slider__back">
+                            <svg class="slider__icon-portf_arrow_up">
+                                <use xlink:href="#icon-portf_arrow_up"></use>
+                            </svg>
+                        </div>
                     </div>
-                </div>
-            </li>
-            <li class="my-work__item">
-                <div class="my-work__img"><img src="{{ asset('img/work/barbershop.png') }}" alt="Барбершоп Бородинский"></div>
-                <div class="my-work__info">
-                    <div class="my-work__subtitle-wrap">
-                        <h3 class="my-work__subtitle">Барбершоп Бородинский</h3>
-                    </div>
-                    <p class="my-work__technologies">Responsive HTML, CSS</p><a
-                            href="https://lonixoon.github.io/barbershop-adaptive/" target="_blank"
-                            class="my-work__btn btn btn--green">Посмотреть сайт
-                        <svg class="my-work__icon-link">
-                            <use xlink:href="#icon-link"></use>
-                        </svg>
-                    </a>
-                </div>
-                <div class="my-work__other-work">
-                    <svg class="arrow-down__icon arrow-down__icon--right">
-                        <use xlink:href="#icon-arrow_down"></use>
-                    </svg>
-                    <h4>Просмотр других работ</h4>
-                </div>
-                <div class="my-work__slider slider">
-                    <div class="slider__next slider__next--nerds">
-                        <svg class="slider__icon-portf_arrow_down">
-                            <use xlink:href="#icon-portf_arrow_down"></use>
-                        </svg>
-                    </div>
-                    <div class="slider__back slider__back--sedona">
-                        <svg class="slider__icon-portf_arrow_up">
-                            <use xlink:href="#icon-portf_arrow_up"></use>
-                        </svg>
-                    </div>
-                </div>
-            </li>
-            <li class="my-work__item">
-                <div class="my-work__img"><img src="{{ asset('img/work/nerds.png') }}" alt="Nerds"></div>
-                <div class="my-work__info">
-                    <div class="my-work__subtitle-wrap">
-                        <h3 class="my-work__subtitle">Студия веб дизайна Nerds</h3>
-                    </div>
-                    <p class="my-work__technologies">Fixed HTML, CSS</p><a href="https://lonixoon.github.io/nerds/"
-                                                                           target="_blank"
-                                                                           class="my-work__btn btn btn--green">Посмотреть
-                        сайт
-                        <svg class="my-work__icon-link">
-                            <use xlink:href="#icon-link"></use>
-                        </svg>
-                    </a>
-                </div>
-                <div class="my-work__other-work">
-                    <svg class="arrow-down__icon arrow-down__icon--right">
-                        <use xlink:href="#icon-arrow_down"></use>
-                    </svg>
-                    <h4>Просмотр других работ</h4>
-                </div>
-                <div class="my-work__slider slider">
-                    <div class="slider__next slider__next--sedona">
-                        <svg class="slider__icon-portf_arrow_down">
-                            <use xlink:href="#icon-portf_arrow_down"></use>
-                        </svg>
-                    </div>
-                    <div class="slider__back slider__back--barbershop">
-                        <svg class="slider__icon-portf_arrow_up">
-                            <use xlink:href="#icon-portf_arrow_up"></use>
-                        </svg>
-                    </div>
-                </div>
-            </li>
+                </li>
+            @endforeach
         </ul>
     </section>
     <section class="feedback">

@@ -7,6 +7,7 @@
 module.exports = (function() {
     let
         slides = doc.querySelectorAll('.my-work__list .my-work__item'), // ищем все слайды
+        slide = doc.querySelector('.my-work__list .my-work__item'), // ищем все слайды
         currentSlide = 0,
         next = doc.querySelectorAll('.slider__next'), // ищем кнопки next на всех слайдах
         back = doc.querySelectorAll('.slider__back'); // ищем кнопки back на всех слайдах
@@ -14,6 +15,10 @@ module.exports = (function() {
     // if (slides.length > 0) {
     //     let slideInterval = setInterval(backSlide, 5000); // делаем слайд шоу (если требуется)
     // }
+
+    // показать первую работу при загрузки
+    slide.classList.add('my-work__item--show');
+
 
 
     function nextSlide() { // перелистываение сладера вперед
