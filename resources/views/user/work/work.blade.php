@@ -5,11 +5,12 @@
         <use xlink:href="#icon-works_header"></use>
     </svg>
     <h1 class="page__title">Мои работы</h1>
-@stop
+@endsection
 
 @section('content')
     <section class="my-work">
         <ul class="my-work__list">
+
             @foreach ($all_works as $value)
                 <li class="my-work__item">
                     <div class="my-work__img"><img src="{{ asset($value->photo) }}" alt="{{ $value->name }}"></div>
@@ -25,27 +26,24 @@
                             </svg>
                         </a>
                     </div>
-                    <div class="my-work__other-work">
-                        <svg class="arrow-down__icon arrow-down__icon--right">
-                            <use xlink:href="#icon-arrow_down"></use>
-                        </svg>
-                        <h4>Просмотр других работ</h4>
-                    </div>
-                    <div class="my-work__slider slider">
-                        <div class="slider__next">
-                            <svg class="slider__icon-portf_arrow_down">
-                                <use xlink:href="#icon-portf_arrow_down"></use>
-                            </svg>
-                        </div>
-                        <div class="slider__back">
-                            <svg class="slider__icon-portf_arrow_up">
-                                <use xlink:href="#icon-portf_arrow_up"></use>
-                            </svg>
-                        </div>
-                    </div>
                 </li>
             @endforeach
+
         </ul>
+        <div class="my-work__slider slider">
+            <div class="slider__back">
+                <svg class="slider__icon-portf_arrow_up">
+                    <use xlink:href="#icon-portf_arrow_up"></use>
+                </svg>
+                <span class="slider__back-text">Назад</span>
+            </div>
+            <div class="slider__next">
+                <span class="slider__next-text">Вперёд</span>
+                <svg class="slider__icon-portf_arrow_down">
+                    <use xlink:href="#icon-portf_arrow_down"></use>
+                </svg>
+            </div>
+        </div>
     </section>
     <section class="feedback">
         <div class="feedback__title-wrap">
@@ -61,7 +59,8 @@
                     Уже обращались в эту компанию много лет назад и были вполне довольны результатами, поэтому когда в
                     очередной раз понадобился сайт, вновь и без сомнений, обратились к ним!
                 </p>
-                <div class="feedback__user-wrap"><img src="{{ asset('img/work/barbershop.png') }}" alt="Роман" class="feedback__avatar">
+                <div class="feedback__user-wrap"><img src="{{ asset('img/work/barbershop.png') }}" alt="Роман"
+                                                      class="feedback__avatar">
                     <div class="feedback__user-name-wrap">
                         <p class="feedback__user-name">Роман</p>
                         <p class="feedback__user-position">Менеджер</p>
@@ -71,7 +70,8 @@
             <li class="feedback__item">
                 <p class="feedback__quote">Всем привет! Хочу выразить благодарность чудесный сайт, который они сделали
                     мне, в довольно короткие сроки.</p>
-                <div class="feedback__user-wrap"><img src="{{ asset('img/work/barbershop.png') }}" alt="Роман" class="feedback__avatar">
+                <div class="feedback__user-wrap"><img src="{{ asset('img/work/barbershop.png') }}" alt="Роман"
+                                                      class="feedback__avatar">
                     <div class="feedback__user-name-wrap">
                         <p class="feedback__user-name">Вован</p>
                         <p class="feedback__user-position">крутой ИТшник</p>
@@ -95,4 +95,4 @@
             </div>
         </form>
     </section>
-@stop
+@endsection

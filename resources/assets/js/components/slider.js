@@ -17,9 +17,9 @@ module.exports = (function() {
     // }
 
     // показать первую работу при загрузки
-    slide.classList.add('my-work__item--show');
-
-
+    if (slide) {
+        slide.classList.add('my-work__item--show');
+    }
 
     function nextSlide() { // перелистываение сладера вперед
         goToSlide(currentSlide + 1);

@@ -76,6 +76,7 @@
     </div>
 </header>
 <main id="main" class="page__main">
+    <div id="section2" class="page__section"></div>
     @yield('content')
     <a href="#header" class="arrow-down arrow-down--up">
         <svg class="arrow-down__icon arrow-down__icon--up">

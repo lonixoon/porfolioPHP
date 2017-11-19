@@ -9,7 +9,6 @@
 
 @section('content')
     <section class="about">
-        <div id="skill123"></div>
         <article class="who-am-i">
             <div class="who-am-i__author-photo">
                 @include('user.about.include.author-photo')

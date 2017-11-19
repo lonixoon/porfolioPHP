@@ -364,6 +364,62 @@ module.exports = (function () {
 
 },{}],8:[function(require,module,exports){
 /**
+ * Created by RUS9211689 on 19.11.2017.
+ */
+module.exports = (function () {
+    function ScrollHandler(pageId) {
+        let page = $('#' + pageId);
+        let pageStart = page.offset().top;
+        let pageJump = false;
+
+        function scrollToPage() {
+            pageJump = true;
+            $('html, body').animate({
+                scrollTop: pageStart
+            }, {
+                duration: 1000,
+                complete: function () {
+                    pageJump = false;
+                }
+            });
+        }
+
+        window.addEventListener('wheel', function (event) {
+            let viewStart = $(window).scrollTop();
+            if (!pageJump) {
+                let pageHeight = page.height();
+                let pageStopPortion = pageHeight / 2;
+                let viewHeight = $(window).height();
+
+                let viewEnd = viewStart + viewHeight;
+                let pageStartPart = viewEnd - pageStart;
+                let pageEndPart = (pageStart + pageHeight) - viewStart;
+
+                let canJumpDown = pageStartPart >= 0;
+                let stopJumpDown = pageStartPart > pageStopPortion;
+
+                let canJumpUp = pageEndPart >= 0;
+                let stopJumpUp = pageEndPart > pageStopPortion;
+
+                let scrollingForward = event.deltaY > 0;
+                if (( scrollingForward && canJumpDown && !stopJumpDown)
+                    || (!scrollingForward && canJumpUp && !stopJumpUp)) {
+                    event.preventDefault();
+                    scrollToPage();
+                }
+            } else {
+                event.preventDefault();
+            }
+        });
+    }
+
+    if ($('#section2').length > 0) {
+        new ScrollHandler('header');
+        new ScrollHandler('section2');
+    }
+});
+},{}],9:[function(require,module,exports){
+/**
  * Created by RUS9211689 on 15.11.2017.
  */
 ////////////////////////////////////////////////////////////////////////
@@ -390,7 +446,7 @@ module.exports = (function () {
 //             }
 //     });
 // });
-},{}],9:[function(require,module,exports){
+},{}],10:[function(require,module,exports){
 /**
  * Created by RUS9211689 on 15.11.2017.
  */
@@ -444,7 +500,7 @@ module.exports = (function () {
         }
     });
 });
-},{}],10:[function(require,module,exports){
+},{}],11:[function(require,module,exports){
 /**
  * Created by RUS9211689 on 15.11.2017.
  */
@@ -504,7 +560,7 @@ module.exports = (function () {
         });
     }
 });
-},{}],11:[function(require,module,exports){
+},{}],12:[function(require,module,exports){
 /**
  * Created by RUS9211689 on 15.11.2017.
  */
@@ -524,9 +580,9 @@ module.exports = (function() {
     // }
 
     // показать первую работу при загрузки
-    slide.classList.add('my-work__item--show');
-
-
+    if (slide) {
+        slide.classList.add('my-work__item--show');
+    }
 
     function nextSlide() { // перелистываение сладера вперед
         goToSlide(currentSlide + 1);
@@ -554,7 +610,7 @@ module.exports = (function() {
         });
     }
 });
-},{}],12:[function(require,module,exports){
+},{}],13:[function(require,module,exports){
 /**
  * Created by RUS9211689 on 15.11.2017.
  */
@@ -584,7 +640,7 @@ module.exports = (function () {
         );
     });
 });
-},{}],13:[function(require,module,exports){
+},{}],14:[function(require,module,exports){
 doc = document;
 let saveSvgToLocalStorageSVG = require('./components/saveSvgToLocalStorageSVG'),
     mainMenuOpen = require('./components/mainMenuOpen'),
@@ -597,7 +653,8 @@ let saveSvgToLocalStorageSVG = require('./components/saveSvgToLocalStorageSVG'),
     fillSkillByScroll = require('./components/fillSkillByScroll'),
     flipLoginBlock = require('./components/flipLoginBlock'),
     sidebarOutput = require('./components/sitebarOutput'),
-    sidebarSticky = require('./components/sidebarSticky');
+    sidebarSticky = require('./components/sidebarSticky'),
+    scrollPage = require('./components/scrollPage');
 
 
 saveSvgToLocalStorageSVG();
@@ -610,6 +667,7 @@ fillSkillByScroll();
 flipLoginBlock();
 sidebarOutput();
 sidebarSticky();
+scrollPage();
 
 
 
@@ -618,4 +676,4 @@ sidebarSticky();
 
 
 
-},{"./components/drawSvgByScroll":1,"./components/fillSkillByScroll":2,"./components/flipLoginBlock":3,"./components/mainMenuOpen":4,"./components/mouseParallax":5,"./components/preloaderPage":6,"./components/saveSvgToLocalStorageSVG":7,"./components/scrollParallax":8,"./components/sidebarSticky":9,"./components/sitebarOutput":10,"./components/slider":11,"./components/smoothScroll":12}]},{},[13]);
+},{"./components/drawSvgByScroll":1,"./components/fillSkillByScroll":2,"./components/flipLoginBlock":3,"./components/mainMenuOpen":4,"./components/mouseParallax":5,"./components/preloaderPage":6,"./components/saveSvgToLocalStorageSVG":7,"./components/scrollPage":8,"./components/scrollParallax":9,"./components/sidebarSticky":10,"./components/sitebarOutput":11,"./components/slider":12,"./components/smoothScroll":13}]},{},[14]);
