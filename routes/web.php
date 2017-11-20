@@ -41,7 +41,8 @@ Route::group(
     /* сохраненение данных */
     Route::post('/admin/about/save', 'AboutController@save');
     Route::post('/admin/blog/save', 'BlogController@save');
-    Route::post('/admin/work/save', 'WorkController@save');
+    Route::post('/admin/work/saveWork', 'WorkController@saveWork');
+    Route::post('/admin/work/saveFeedback', 'WorkController@saveFeedback');
 
 
 //    /* тестовые страницы */

@@ -1,169 +1,166 @@
 .feedback {
-  display: flex;
-  flex-direction: column;
-  background: #fff url(../img/bg/bg2-mobile.jpg) no-repeat 50% 100%;
-  width: 100%;
-  padding-bottom: 60px;
+	display: flex;
+	flex-direction: column;
+	background: #fff url(../img/bg/bg2-mobile.jpg) no-repeat 50% 100%;
+	width: 100%;
+	padding-bottom: 60px;
 
-  &__title-wrap {
-    position: relative;
-    text-align: center;
-  }
+	&__title-wrap {
+		position: relative;
+		text-align: center;
+	}
 
-  &__icon-about_header {
-    position: absolute;
-    width: 220px;
+	&__icon-about_header {
+		position: absolute;
+		width: 220px;
 
-    left: 50%;
-    top: 50%;
+		left: 50%;
+		top: 50%;
 
-    margin-top: -55px;
-    margin-left: -110px;
-    
-    fill: fade(#000, 4%);
-    z-index: 10;
-  }
+		margin-top: -55px;
+		margin-left: -110px;
 
-  &__title {
-    .line-for-title();
-    margin-bottom: 0;
-    font-size: 35px;
-    z-index: 20;
-  }
+		fill: fade(#000, 4%);
+		z-index: 10;
+	}
 
-  &__form {
-    margin-bottom: 30px;
-  }
+	&__title {
+		.line-for-title();
+		margin-bottom: 0;
+		font-size: 35px;
+		z-index: 20;
+	}
 
-  &__list {
-    list-style: none;
-    padding: 0 10px;
-  }
+	&__form {
+		margin-bottom: 30px;
+	}
 
-  &__item {
-    position: relative;
-    padding-top: 25px;
-    margin-bottom: 30px;
+	&__list {
+		list-style: none;
+		padding: 0 10px;
+	}
 
-    &::before {
-      position: absolute;
-      width: 40px;
-      top: 0px;
-      left: 50%;
-      margin-left: -20px;
-      content: "“";
-      font-size: 120px;
-      font-family: "arial";
-      line-height: 0.75;
-      opacity: 0.2;
-    }
-  }
+	&__item {
+		position: relative;
+		padding-top: 25px;
+		margin-bottom: 30px;
 
-  &__avatar {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    margin-right: 20px;
-  }
+		&::before {
+			position: absolute;
+			width: 40px;
+			top: 0px;
+			left: 50%;
+			margin-left: -20px;
+			content: "“";
+			font-size: 120px;
+			font-family: "arial";
+			line-height: 0.75;
+			opacity: 0.2;
+		}
+	}
 
-  &__user-wrap {
-    display: flex;
-    color: @green;
-    line-height: 1.8;
-  }
+	&__avatar {
+		width: 50px;
+		height: 50px;
+		border-radius: 50%;
+		margin-right: 20px;
+	}
 
+	&__user-wrap {
+		display: flex;
+		color: @green;
+		line-height: 1.8;
+	}
 
-  &__user-name {
-    margin: 0;
-    font-weight: 700;
-  }
+	&__user-name {
+		margin: 0;
+		font-weight: 700;
+	}
 
-  &__user-position {
-    margin: 0;
-    font-weight: 300;
-  }
+	&__user-position {
+		margin: 0;
+		font-weight: 300;
+	}
 }
-
 
 @media @tablet {
-  .feedback {
-    background: #fff url(../img/bg/bg2-tablet.jpg) no-repeat 50% 100%;
-    padding-bottom: 90px;
-    
-    &__icon-about_header {
-      width: 400px;
-      margin-top: -70px;
-      margin-left: -200px;
-    }
+	.feedback {
+		background: #fff url(../img/bg/bg2-tablet.jpg) no-repeat 50% 100%;
+		padding-bottom: 90px;
 
-    &__title {
-      font-size: 48px;
-      margin-bottom: 30px;
+		&__icon-about_header {
+			width: 400px;
+			margin-top: -70px;
+			margin-left: -200px;
+		}
 
-      br {
-        display: none;
-      }
-    }
+		&__title {
+			font-size: 48px;
+			margin-bottom: 30px;
 
-    &__list {
-      display: flex;
-    }
+			br {
+				display: none;
+			}
+		}
 
-    &__item {
-      width: 50%;
-      padding-left: 25px;
-      padding-right: 25px;
+		&__list {
+			display: flex;
+			flex-wrap: wrap;
+		}
 
-      &::before {
-        left: 20px;
-        margin-left: 0;
-      }
-    }
-  }
+		&__item {
+			width: 33.33%;
+			padding-left: 25px;
+			padding-right: 25px;
+
+			&::before {
+				left: 20px;
+				margin-left: 0;
+			}
+		}
+	}
 }
-
 
 @media @laptop {
-  .feedback {
-    background: #fff url(../img/bg/bg2-desktop.jpg) no-repeat 50% 35%;
-    padding-bottom: 80px;
+	.feedback {
+		background: #fff url(../img/bg/bg2-desktop.jpg) no-repeat 50% 35%;
+		padding-bottom: 80px;
 
-    &__icon-about_header {
-      width: 600px;
-      height: 400px;
-      margin-top: -80px;
-      margin-left: -300px;
-    }
+		&__icon-about_header {
+			width: 600px;
+			height: 400px;
+			margin-top: -80px;
+			margin-left: -300px;
+		}
 
-    &__title {
-      font-size: 60px;
-      margin-bottom: 30px;
+		&__title {
+			font-size: 60px;
+			margin-bottom: 30px;
 
-      br {
-        display: none;
-      }
-    }
+			br {
+				display: none;
+			}
+		}
 
-    &__list {
-      padding-left: 60px;
-      padding-right: 60px;
-    }
+		&__list {
+			padding-left: 60px;
+			padding-right: 60px;
+		}
 
-    &__item {
-      padding-left: 40px;
-      padding-right: 40px;
+		&__item {
+			padding-left: 40px;
+			padding-right: 40px;
 
-      &::before {
-        left: 40px;
-        margin-left: 0;
-      }
-    }
-  }
+			&::before {
+				left: 40px;
+				margin-left: 0;
+			}
+		}
+	}
 }
 
-
 @media @desktop {
-  .feedback {
-    padding-bottom: 120px;
-  }
+	.feedback {
+		padding-bottom: 120px;
+	}
 }

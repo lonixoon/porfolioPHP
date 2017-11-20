@@ -25,7 +25,7 @@
             <div class="skills__title-wrap">
                 <h3 class="skills__title">Чем я могу быть<br> вам полезен</h3>
             </div>
-            <p class="skills__text">Больше меня привлекает Frontend, но я так же знаком и могу решать не сложные задачи
+            <p class="skills__text">Больше меня привлекает Frontend, но я так же знаком и могу решать различные задачи
                 по Backend.</p>
             <ul class="skills__list">
                 <li class="skills__item">

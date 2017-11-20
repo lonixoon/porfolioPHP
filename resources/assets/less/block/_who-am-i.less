@@ -1,86 +1,86 @@
 .who-am-i {
-  display: flex;
-  flex-direction: column;
-  // justify-content: center;
-  align-items: center;
-  background-color: #f0eee9;
-  
-  &__author-photo {
-    text-align: center;
-    padding-top: 15px;
+	display: flex;
+	flex-direction: column;
+	// justify-content: center;
+	align-items: center;
+	background-color: #f0eee9;
 
-    // img {
-      // width: 400px;
-      // max-width: 60%;
-    // }
-  }
+	&__author-photo {
+		text-align: center;
+		padding-top: 15px;
 
-  &__icon-author-photo {
-    fill: none;
-    height: 200px;
-    stroke: @gray;
-    stroke-width: 4px;
+		// img {
+		// width: 400px;
+		// max-width: 60%;
+		// }
+	}
 
-    &-body {
-      stroke-dasharray: 600;
-      stroke-dashoffset: 600;
-      transition: all 3000ms ease-in-out;
-    }
-  }
-  
-  &__title-wrap {
-    text-align: center;
-  }
+	&__icon-author-photo {
+		fill: none;
+		height: 200px;
+		stroke: @gray;
+		stroke-width: 4px;
 
-  &__title {
-    .line-for-title();
-    margin-top: 10px;
-    margin-bottom: 0;
-    font-size: 21px;
-  }
+		&-body {
+			stroke-dasharray: 600;
+			stroke-dashoffset: 600;
+			transition: all 3000ms ease-in-out;
+		}
+	}
 
-  &__text {
-    padding: 0 10px;
-  }
+	&__title-wrap {
+		text-align: center;
+	}
+
+	&__title {
+		.line-for-title();
+		margin-top: 0px;
+		margin-bottom: 0;
+		font-size: 21px;
+	}
+
+	&__text {
+		padding: 0 10px;
+		margin-bottom: 0;
+	}
 }
-
 
 @media @tablet {
-  .who-am-i {
-    &__title {
-      font-size: 30px;
-    }
+	.who-am-i {
+		&__title {
+			font-size: 30px;
+		}
 
-    &__icon-author-photo {
-      height: 300px;
-    }
+		&__icon-author-photo {
+			height: 300px;
+		}
 
-    &__text {
-      padding: 0 80px;
-    }
-  }
+		&__text {
+			padding: 0 80px;
+		}
+	}
 }
 
-
 @media @laptop {
-  .who-am-i {
-    width: 50%;
-    // max-height: 100vh;
+	.who-am-i {
+		height: 100vh;
+		width: 50%;
+		justify-content: center;
 
-    &__author-photo {
-      padding-top: 25px;
-    }
+		&__author-photo {
+			padding-top: 0;
+		}
 
-    &__icon-author-photo {
-      height: 400px;  
-    }
+		&__icon-author-photo {
+			height: 400px;
+		}
 
-    &__title {
-      font-size: 35px;
-    }
+		&__title {
+			font-size: 35px;
+		}
 
-    &__text {
-      padding: 0 40px;
-    }
-  }
+		&__text {
+			padding: 0 40px;
+		}
+	}
 }

@@ -1259,6 +1259,7 @@ input[type="radio"]:checked + .radio::before {
   display: -moz-box;
   display: -ms-flexbox;
   display: flex;
+  width: 100%;
 }
 
 .page__static {
@@ -2427,7 +2428,7 @@ input[type="radio"]:checked + .radio::before {
   display: inline-flex;
   padding-left: 40px;
   padding-right: 40px;
-  margin-top: 10px;
+  margin-top: 0px;
   margin-bottom: 0;
   font-size: 21px;
 }
@@ -2459,6 +2460,7 @@ input[type="radio"]:checked + .radio::before {
 
 .who-am-i__text {
   padding: 0 10px;
+  margin-bottom: 0;
 }
 
 .skills {
@@ -2532,7 +2534,7 @@ input[type="radio"]:checked + .radio::before {
 }
 
 .skills__type {
-  margin: 15px 0 10px 0;
+  margin: 15px 0 0 0;
   font-weight: 500;
 }
 
@@ -2693,6 +2695,7 @@ input[type="radio"]:checked + .radio::before {
   padding-bottom: 60px;
   border-top: 1px solid #fff;
   background-color: #fff;
+  width: 100%;
 }
 
 .blog__icon-corner {
@@ -3313,10 +3316,13 @@ input[type="radio"]:checked + .radio::before {
     display: -moz-box;
     display: -ms-flexbox;
     display: flex;
+    -webkit-flex-wrap: wrap;
+        -ms-flex-wrap: wrap;
+            flex-wrap: wrap;
   }
 
   .feedback__item {
-    width: 50%;
+    width: 33.33%;
     padding-left: 25px;
     padding-right: 25px;
   }
@@ -3700,11 +3706,17 @@ input[type="radio"]:checked + .radio::before {
   }
 
   .who-am-i {
+    height: 100vh;
     width: 50%;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+       -moz-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
   }
 
   .who-am-i__author-photo {
-    padding-top: 25px;
+    padding-top: 0;
   }
 
   .who-am-i__icon-author-photo {
@@ -3721,6 +3733,12 @@ input[type="radio"]:checked + .radio::before {
 
   .skills {
     width: 50%;
+    height: 100vh;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+       -moz-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
     -webkit-box-align: start;
     -webkit-align-items: flex-start;
        -moz-box-align: start;

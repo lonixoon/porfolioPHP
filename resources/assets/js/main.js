@@ -49,7 +49,7 @@ sidebarOutput();
 // приклеенный сайдбар для блога
 sidebarSticky();
 // плавная прокрутка на 1 экран вниз
-scrollHandler();
+// scrollHandler();
 
 
 

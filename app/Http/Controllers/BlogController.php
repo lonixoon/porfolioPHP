@@ -4,15 +4,16 @@ namespace App\Http\Controllers;
 
 use App\Blog;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Redirect;
+//use Illuminate\Support\Facades\DB;
+//use Illuminate\Support\Facades\Redirect;
 
 class BlogController extends Controller
 {
     public function index()
     {
-        // берём всё содиржимое модели
-        $data['all_article'] = Blog::all();
+        $blog = new Blog();
+        $data['all_article'] = $blog->getFromDB();
+
         return view('user.blog.blog', $data);
     }
 
@@ -23,27 +24,16 @@ class BlogController extends Controller
 
     public function save(Request $request)
     {
+        // валидация полученных данных
         $this->validate($request, [
             'title' => 'required',
             'text' => 'required'
         ]);
 
-        try {
-            // транзакция для сохранения целосности информации, если ошибка данные в базе не запишутся
-            DB::transaction( function () use ($request) {
-                // создаем новый отзыв
-                $blog = new Blog();
-                // берём поле input, очищаем от тегов
-                $blog->title = strip_tags($request->title);
-                $blog->text = strip_tags($request->text);
-                // сохраняем в базу для создания id
-                $blog->save();//
-            });
-//             перекидываем или выводим страницу блог
-            return redirect()->action('BlogController@index');
-//            $this->index();
-        } catch (Exception $exception) {
-           $exception->getMessage();
-        }
+        $blog = new Blog();
+        // вызываем метод и передаём в него запрос
+        $blog->saveToDB($request);
+        // делаем редирект
+        return redirect()->action('BlogController@index');
     }
 }

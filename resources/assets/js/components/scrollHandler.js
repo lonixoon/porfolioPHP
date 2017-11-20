@@ -48,8 +48,10 @@ module.exports = (function () {
         });
     }
 
-    if ($('#section2').length > 0) {
+    if ($('#header').length > 0) {
         new ScrollHandler('header');
+    }
+    if ($('#section2').length > 0) {
         new ScrollHandler('section2');
     }
 });

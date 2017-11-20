@@ -3,7 +3,7 @@
 @section('content')
     <h2 class="admin-page__title">Мои работы</h2>
     <div class="admin-my-work">
-        <form action="{{ url('/admin/work/save') }}" method="post" class="admin-my-work__form"
+        <form action="{{ url('/admin/work/saveWork') }}" method="post" class="admin-my-work__form"
         enctype="multipart/form-data">
             {{ csrf_field() }}
             <input type="text" name="name" placeholder="Название проекта" class="admin-my-work__text">

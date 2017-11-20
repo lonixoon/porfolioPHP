@@ -53,41 +53,32 @@
             <h2 class="feedback__title">Что обо мне<br> говорят</h2>
         </div>
         <ul class="feedback__list">
-            <li class="feedback__item">
-                <p class="feedback__quote">
-                    Доброго дня всем! Хочу похвалить за отлично проделанную работу!<br>
-                    Уже обращались в эту компанию много лет назад и были вполне довольны результатами, поэтому когда в
-                    очередной раз понадобился сайт, вновь и без сомнений, обратились к ним!
-                </p>
-                <div class="feedback__user-wrap"><img src="{{ asset('img/work/barbershop.png') }}" alt="Роман"
-                                                      class="feedback__avatar">
-                    <div class="feedback__user-name-wrap">
-                        <p class="feedback__user-name">Роман</p>
-                        <p class="feedback__user-position">Менеджер</p>
+
+            @foreach ($all_feedback as $value)
+                <li class="feedback__item">
+                    <p class="feedback__quote">{{ $value->user_text }}</p>
+                    <div class="feedback__user-wrap">
+{{--                        <img src="{{ asset('img/work/barbershop.png') }}" alt="{{ $value->user_name }}" class="feedback__avatar">--}}
+                        <div class="feedback__user-name-wrap">
+                            <p class="feedback__user-name">{{ $value->user_name }}</p>
+                            <p class="feedback__user-position">{{ $value->user_position }}</p>
+                        </div>
                     </div>
-                </div>
-            </li>
-            <li class="feedback__item">
-                <p class="feedback__quote">Всем привет! Хочу выразить благодарность чудесный сайт, который они сделали
-                    мне, в довольно короткие сроки.</p>
-                <div class="feedback__user-wrap"><img src="{{ asset('img/work/barbershop.png') }}" alt="Роман"
-                                                      class="feedback__avatar">
-                    <div class="feedback__user-name-wrap">
-                        <p class="feedback__user-name">Вован</p>
-                        <p class="feedback__user-position">крутой ИТшник</p>
-                    </div>
-                </div>
-            </li>
+                </li>
+            @endforeach
+
         </ul>
-        <form action="" class="feedback__form form">
+        <form action="{{ url('/admin/work/saveFeedback') }}" method="post" class="feedback__form form">
+            {{ csrf_field() }}
             <div class="form__title-wrap">
                 <h3 class="form__title">Связаться со мной</h3>
             </div>
             <div class="form__body">
-                <input type="text" placeholder="Имя" required class="form__text form__text--name">
-                <input type="text" placeholder="Должность" class="form__text">
-                <input type="email" placeholder="Email" class="form__text form__text--email">
-                <textarea placeholder="Ваше сообщение" required class="form__text form__text--textarea"></textarea>
+                <input name="user_name" type="text" placeholder="Имя" class="form__text form__text--name" required>
+                <input name="user_position" type="text" placeholder="Должность" class="form__text">
+                <input name="user_email" type="email" placeholder="Email" class="form__text form__text--email">
+                <textarea name="user_text" placeholder="Ваше сообщение" class="form__text form__text--textarea"
+                          required></textarea>
             </div>
             <div class="form__bottom">
                 <button type="submit" class="btn btn--authorization btn--green">Отправить</button>
