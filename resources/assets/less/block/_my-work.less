@@ -26,13 +26,11 @@
 	}
 
 	&__item {
-		// display: none;
 		position: absolute;
 		display: flex;
 		visibility: hidden;
 		flex-direction: column;
 		height: 100%;
-
 
 		&--show {
 			position: static;
@@ -49,7 +47,6 @@
 			.my-work__info {
 				visibility: visible;
 
-
 				.my-work__subtitle {
 					opacity: 1;
 					// transition: opacity 1500ms ease;
@@ -61,27 +58,23 @@
 					transition: font-size 800ms ease;
 				}
 			}
-
-			//.slider {
-			//	&__next,
-			//	&__back {
-			//		background-position: 50% 50%;
-			//	}
-			//}
 		}
 	}
 
 	&__img {
-		text-align: center;
+		display: flex;
+		justify-content: center;
+		align-items: center;
 		height: 60%;
 		padding: 40px;
 		background-color: #EFEBE0;
 
 		img {
-			width: 500px;
 			max-height: 100%;
+			max-width: 100%;
 			opacity: 0;
 			visibility: hidden;
+			//object-fit: contain;
 		}
 	}
 
@@ -89,10 +82,10 @@
 		display: flex;
 		flex-direction: column;
 		align-items: center;
-		padding: 30px 10px;
+		justify-content: center;
+		padding: 0 10px;
 		background-color: #F0EFEA;
 		height: 40%;
-		// opacity: 0;
 		visibility: hidden;
 	}
 
@@ -111,17 +104,6 @@
 
 		color: @green;
 	}
-
-	//&__other-work {
-	//  color: @green;
-	//  text-align: center;
-	//  background-color: #EAE6DD;
-	//
-	//  h4 {
-	//    margin: 0;
-	//    margin-top: 10px;
-	//  }
-	//}
 
 	&__btn {
 		position: relative;
@@ -155,12 +137,11 @@
 		}
 
 		&__info {
-			padding: 10px;
+			padding: 0 40px;
 		}
 
 		&__technologies {
 			padding: 12px 0;
-			width: 350px;
 		}
 
 		&__btn {
@@ -168,14 +149,6 @@
 			padding-bottom: 13px;
 			padding-left: 50px;
 		}
-
-		//&__other-work {
-		//
-		//  h4 {
-		//    font-size: 18px;
-		//    margin-top: 15px;
-		//  }
-		//}
 	}
 }
 
@@ -196,54 +169,25 @@
 			height: 100%;
 		}
 
-
 		&__img {
-			display: flex;
-			justify-content: center;
 			order: 2;
 			width: 50%;
 			height: 100%;
 
 			img {
-				width: 700px;
-				object-fit: contain;
 			}
 		}
 
-		//&__other-work {
-		//  position: relative;
-		//  display: flex;
-		//  flex-direction: column;
-		//  order: 3;
-		//  width: 50%;
-		//  font-size: 24px;
-		//  font-weight: 500;
-		//  color: @green;
-		//  justify-content: center;
-		//  aling-items: center;
-		//
-		//  h4 {
-		//    font-weight: inherit;
-		//    font-size: 24px;
-		//    margin: 0;
-		//  }
-		//}
-
 		&__slider {
 			order: 4;
-			//height: 30%;
-			//width: 100%;
 		}
 
 		&__info {
-			display: flex;
 			order: 1;
 			width: 50%;
-			justify-content: center;
 		}
 
 		&__technologies {
-			width: 450px;
 			margin: 40px 0;
 		}
 	}
@@ -253,7 +197,6 @@
 	.my-work {
 
 		&__info {
-			margin-bottom: 100px;
 		}
 	}
 }

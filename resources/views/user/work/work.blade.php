@@ -46,44 +46,48 @@
         </div>
     </section>
     <section class="feedback">
-        <div class="feedback__title-wrap">
-            <svg class="feedback__icon-about_header">
-                <use xlink:href="#icon-about_header"></use>
-            </svg>
-            <h2 class="feedback__title">Что обо мне<br> говорят</h2>
-        </div>
-        <ul class="feedback__list">
+        <div class="feedback__section">
+            <div class="feedback__title-wrap">
+                <svg class="feedback__icon-about_header">
+                    <use xlink:href="#icon-about_header"></use>
+                </svg>
+                <h2 class="feedback__title">Что обо мне<br> говорят</h2>
+            </div>
+            <ul class="feedback__list">
 
-            @foreach ($all_feedback as $value)
-                <li class="feedback__item">
-                    <p class="feedback__quote">{{ $value->user_text }}</p>
-                    <div class="feedback__user-wrap">
-{{--                        <img src="{{ asset('img/work/barbershop.png') }}" alt="{{ $value->user_name }}" class="feedback__avatar">--}}
-                        <div class="feedback__user-name-wrap">
+                @foreach ($all_feedback as $value)
+                    <li class="feedback__item">
+                        <p class="feedback__quote">{{ $value->user_text }}</p>
+                        <div class="feedback__user-wrap">
+                            {{--                        <img src="{{ asset('img/work/barbershop.png') }}" alt="{{ $value->user_name }}" class="feedback__avatar">--}}
+                            {{--<div class="feedback__user-name-wrap">--}}
                             <p class="feedback__user-name">{{ $value->user_name }}</p>
                             <p class="feedback__user-position">{{ $value->user_position }}</p>
+                            {{--</div>--}}
                         </div>
-                    </div>
-                </li>
-            @endforeach
+                    </li>
+                @endforeach
 
-        </ul>
-        <form action="{{ url('/admin/work/saveFeedback') }}" method="post" class="feedback__form form">
-            {{ csrf_field() }}
-            <div class="form__title-wrap">
-                <h3 class="form__title">Связаться со мной</h3>
-            </div>
-            <div class="form__body">
-                <input name="user_name" type="text" placeholder="Имя" class="form__text form__text--name" required>
-                <input name="user_position" type="text" placeholder="Должность" class="form__text">
-                <input name="user_email" type="email" placeholder="Email" class="form__text form__text--email">
-                <textarea name="user_text" placeholder="Ваше сообщение" class="form__text form__text--textarea"
-                          required></textarea>
-            </div>
-            <div class="form__bottom">
-                <button type="submit" class="btn btn--authorization btn--green">Отправить</button>
-                <button type="reset" class="btn btn--authorization btn--green">Очистить</button>
-            </div>
-        </form>
+            </ul>
+        </div>
+        <div class="feedback__section">
+            <form action="{{ url('/admin/work/saveFeedback') }}" method="post" class="feedback__form form">
+                {{ csrf_field() }}
+                <div class="form__title-wrap">
+                    <h3 class="form__title">Связаться со мной</h3>
+                </div>
+                <div class="form__body">
+                    <input name="user_name" type="text" placeholder="Имя" class="form__text form__text--name" required>
+                    <input name="user_position" type="text" placeholder="Должность" class="form__text">
+                    <input name="user_email" type="email" placeholder="Email" class="form__text form__text--email">
+                    <textarea name="user_text" placeholder="Ваше сообщение" class="form__text form__text--textarea"
+                              required></textarea>
+                </div>
+                <div class="form__bottom">
+                    <button type="submit" class="btn btn--authorization btn--green">Отправить</button>
+                    <button type="reset" class="btn btn--authorization btn--green">Очистить</button>
+                </div>
+            </form>
+        </div>
     </section>
 @endsection
