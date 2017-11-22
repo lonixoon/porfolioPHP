@@ -848,9 +848,66 @@ input[type="radio"]:checked + .radio::before {
   display: -moz-box;
   display: -ms-flexbox;
   display: flex;
-  padding: 10px 0;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+     -moz-box-orient: vertical;
+     -moz-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   width: 100%;
-  background-color: #EAE6DD;
+  background-color: #f1efe7;
+}
+
+.slider__preload {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  height: 30px;
+  list-style: none;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+     -moz-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+     -moz-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background: #d7d5ce;
+}
+
+.slider__preload-wrap {
+  width: 20px;
+  height: 20px;
+  margin: 0 10px;
+}
+
+.slider__preload-wrap input {
+  display: none;
+}
+
+.slider__preload-item::before {
+  top: 0;
+  left: 0;
+}
+
+.slider__button {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+     -moz-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
 }
 
 .slider__next,
@@ -872,21 +929,37 @@ input[type="radio"]:checked + .radio::before {
           align-items: center;
   width: 50%;
   height: 100%;
-  opacity: 0.6;
   cursor: pointer;
-  -webkit-transition: opacity 500ms, background-position 600ms;
-  -o-transition: opacity 500ms, background-position 600ms;
-  -moz-transition: opacity 500ms, background-position 600ms;
-  transition: opacity 500ms, background-position 600ms;
+  -webkit-transition: all 400ms;
+  -o-transition: all 400ms;
+  -moz-transition: all 400ms;
+  transition: all 400ms;
 }
 
 .slider__next:hover,
 .slider__back:hover {
-  opacity: 1;
+  -webkit-transition: all 400ms;
+  -o-transition: all 400ms;
+  -moz-transition: all 400ms;
+  transition: all 400ms;
+  background: #dfdbd2;
 }
 
 .slider__next-text {
   font-size: 16px;
+}
+
+.slider__icon_arrow {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+     -moz-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
 .slider__icon-portf_arrow_down,
@@ -898,35 +971,19 @@ input[type="radio"]:checked + .radio::before {
      -moz-transform: rotate(-90deg);
       -ms-transform: rotate(-90deg);
           transform: rotate(-90deg);
-  -webkit-transition-duration: 800ms;
-     -moz-transition-duration: 800ms;
-       -o-transition-duration: 800ms;
-          transition-duration: 800ms;
-  -webkit-transition-property: fill;
-  -o-transition-property: fill;
-  -moz-transition-property: fill;
-  transition-property: fill;
-  -webkit-transition: margin 100ms;
-  -o-transition: margin 100ms;
-  -moz-transition: margin 100ms;
-  transition: margin 100ms;
+  -webkit-transition: all 200ms;
+  -o-transition: all 200ms;
+  -moz-transition: all 200ms;
+  transition: all 200ms;
 }
 
 .slider__next:hover .slider__icon-portf_arrow_down,
 .slider__back:hover .slider__icon-portf_arrow_up {
   fill: #009688;
-  -webkit-transition: margin 400ms;
-  -o-transition: margin 400ms;
-  -moz-transition: margin 400ms;
-  transition: margin 400ms;
-}
-
-.slider__next:hover .slider__icon-portf_arrow_down {
-  margin-left: 30px;
-}
-
-.slider__back:hover .slider__icon-portf_arrow_up {
-  margin-right: 30px;
+  -webkit-transition: all 400ms;
+  -o-transition: all 400ms;
+  -moz-transition: all 400ms;
+  transition: all 400ms;
 }
 
 .admin-navbar {
@@ -3064,13 +3121,16 @@ input[type="radio"]:checked + .radio::before {
   }
 
   .slider {
-    padding: 15px 0;
     height: 215px;
   }
 
   .slider__icon-portf_arrow_down,
   .slider__icon-portf_arrow_up {
     width: 48px;
+  }
+
+  .slider__text {
+    font-size: 18px;
   }
 
   .admin-navbar {
@@ -3491,6 +3551,10 @@ input[type="radio"]:checked + .radio::before {
 
   .form__title {
     font-size: 35px;
+  }
+
+  .slider__text {
+    font-size: 20px;
   }
 
   .arrow-down {

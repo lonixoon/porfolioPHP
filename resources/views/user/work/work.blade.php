@@ -19,7 +19,7 @@
                             <h3 class="my-work__subtitle">{{ $value->name }}</h3>
                         </div>
                         <p class="my-work__technologies">{{ $value->technology }}</p><a
-                                href="#" target="_blank"
+                                href="{{ $value->work_url }}" target="_blank"
                                 class="my-work__btn btn btn--green">Посмотреть сайт
                             <svg class="my-work__icon-link">
                                 <use xlink:href="#icon-link"></use>
@@ -31,17 +31,34 @@
 
         </ul>
         <div class="my-work__slider slider">
-            <div class="slider__back">
-                <svg class="slider__icon-portf_arrow_up">
-                    <use xlink:href="#icon-portf_arrow_up"></use>
-                </svg>
-                <span class="slider__back-text">Назад</span>
+            <div class="slider__preload">
+
+                @foreach ($all_works as $value)
+                    {{--<li class="slider__preload-item">{{ $value->name }}</li>--}}
+                    <div class="slider__preload-wrap">
+                        <input id="{{ 'slide_' . $value->id }}" name="works" type="radio">
+                        <label for="{{ 'slide_' . $value->id }}" class="radio slider__preload-item"></label>
+                    </div>
+                @endforeach
+
             </div>
-            <div class="slider__next">
-                <span class="slider__next-text">Вперёд</span>
-                <svg class="slider__icon-portf_arrow_down">
-                    <use xlink:href="#icon-portf_arrow_down"></use>
-                </svg>
+            <div class="slider__button">
+                <div class="slider__back">
+                    <div class="slider__icon_arrow">
+                        <svg class="slider__icon-portf_arrow_up">
+                            <use xlink:href="#icon-portf_arrow_up"></use>
+                        </svg>
+                    </div>
+                    <div class="slider__text">Назад</div>
+                </div>
+                <div class="slider__next">
+                    <div class="slider__text">Вперёд</div>
+                    <div class="slider__icon_arrow">
+                        <svg class="slider__icon-portf_arrow_down">
+                            <use xlink:href="#icon-portf_arrow_down"></use>
+                        </svg>
+                    </div>
+                </div>
             </div>
         </div>
     </section>

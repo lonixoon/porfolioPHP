@@ -8,6 +8,7 @@
             {{ csrf_field() }}
             <input type="text" name="name" placeholder="Название проекта" class="admin-my-work__text">
             <input type="text" name="technology" placeholder="Технологии" class="admin-my-work__text">
+            <input type="text" name="work_url" placeholder="Ссылка на работу" class="admin-my-work__text">
             <label class="admin-my-work__attachment">Загрузить картинку
                 <input name="photo" type="file" accept="image/jpeg,image/png">
             </label>
