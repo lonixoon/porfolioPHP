@@ -22,7 +22,7 @@
     <div class="parallax__layer parallax__layer--scroll"><img src="{{ asset('img/parallax/layer_7.png') }}"></div>
     <div class="parallax__layer parallax__layer--scroll"><img src="{{ asset('img/parallax/layer_8.png') }}"></div>
 </div>
-<header id="header" class="page__header page__header--inner-page">
+<header id="section-0" class="page__header page__header--inner-page">
     <div class="social">
         <ul class="social__list">
             <li class="social__item"><a href="http://vk.com/lonixon" target="_blank"
@@ -76,9 +76,9 @@
     </div>
 </header>
 <main id="main" class="page__main">
-    <div id="section2" class="page__section"></div>
+    <div id="section-1" class="page__section"></div>
     @yield('content')
-    <a href="#header" class="arrow-down arrow-down--up">
+    <a href="#section-0" class="arrow-down arrow-down--up">
         <svg class="arrow-down__icon arrow-down__icon--up">
             <use xlink:href="#icon-arrow_down"></use>
         </svg>

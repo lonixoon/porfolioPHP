@@ -368,7 +368,9 @@ module.exports = (function () {
  */
 module.exports = (function () {
     function ScrollHandler(pageId) {
+        // определяем секцию
         let page = $('#' + pageId);
+        // находим верх секции
         let pageStart = page.offset().top;
         let pageJump = false;
 
@@ -377,7 +379,8 @@ module.exports = (function () {
             $('html, body').animate({
                 scrollTop: pageStart
             }, {
-                duration: 1000,
+                // скорость прокрутки
+                duration: 600,
                 complete: function () {
                     pageJump = false;
                 }
@@ -413,12 +416,23 @@ module.exports = (function () {
         });
     }
 
-    if ($('#header').length > 0) {
-        new ScrollHandler('header');
+    // опеределяем по классу section-scroll длину массива
+    for (let i = 0; i < 10; i++) {
+        new ScrollHandler('section-' + i);
     }
-    if ($('#section2').length > 0) {
-        new ScrollHandler('section2');
-    }
+
+
+
+    // if ($('#header').length > 0 ||
+    //     $('#section2').length > 0 ||
+    //     $('#section3').length > 0 ||
+    //     $('#section4').length > 0) {
+    //     new ScrollHandler('header');
+    //     new ScrollHandler('section2');
+    //     new ScrollHandler('section3');
+    //     new ScrollHandler('section4');
+    // }
+
 });
 },{}],9:[function(require,module,exports){
 /**
@@ -729,7 +743,7 @@ sidebarOutput();
 // приклеенный сайдбар для блога
 sidebarSticky();
 // плавная прокрутка на 1 экран вниз
-// scrollHandler();
+scrollHandler();
 
 
 

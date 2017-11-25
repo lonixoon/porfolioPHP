@@ -62,7 +62,7 @@
             </div>
         </div>
     </section>
-    <section class="feedback">
+    <section id="section-2" class="feedback">
         <div class="feedback__section">
             <div class="feedback__title-wrap">
                 <svg class="feedback__icon-about_header">
@@ -87,17 +87,17 @@
 
             </ul>
         </div>
-        <div class="feedback__section">
+        <div id="section-3" class="feedback__section section-scroll">
             <form action="{{ url('/admin/work/saveFeedback') }}" method="post" class="feedback__form form">
                 {{ csrf_field() }}
                 <div class="form__title-wrap">
-                    <h3 class="form__title">Связаться со мной</h3>
+                    <h3 class="form__title">Добавить отзыв</h3>
                 </div>
                 <div class="form__body">
-                    <input name="user_name" type="text" placeholder="Имя" class="form__text form__text--name" required>
+                    <input name="user_name" type="text" placeholder="Имя *" class="form__text form__text--name" required>
                     <input name="user_position" type="text" placeholder="Должность" class="form__text">
                     <input name="user_email" type="email" placeholder="Email" class="form__text form__text--email">
-                    <textarea name="user_text" placeholder="Ваше сообщение" class="form__text form__text--textarea"
+                    <textarea name="user_text" placeholder="Ваше сообщение *" class="form__text form__text--textarea"
                               required></textarea>
                 </div>
                 <div class="form__bottom">

@@ -16,10 +16,12 @@
             <div class="who-am-i__title-wrap">
                 <h3 class="who-am-i__title">Кто я</h3>
             </div>
-            <p class="who-am-i__text">Я начинающий веб разработчик из Новосибирска. Учусь разрабатывать современные и
-                удобные сайты. Мне нравятся интересные и сложные проекты.</p>
-            <p class="who-am-i__text">Этот сайт я сделал в рамках учебного проекта. Чуть позже он наполнится контентом,
-                а пока просто посмотрите как тут все красиво!</p>
+            <div class="who-am-i__text-wrap">
+                <p class="who-am-i__text">Я начинающий веб разработчик из Новосибирска. Учусь разрабатывать современные и
+                    удобные сайты. Мне нравятся интересные и сложные проекты.</p>
+                <p class="who-am-i__text">Этот сайт я сделал в рамках учебного проекта. Чуть позже он наполнится контентом,
+                    а пока просто посмотрите как тут все красиво!</p>
+            </div>
         </article>
         <article class="skills">
             <div class="skills__title-wrap">
@@ -136,7 +138,7 @@
             </ul>
         </article>
     </section>
-    <section class="contacts">
+    <section id="section-2" class="contacts">
         <div class="contacts__wrap">
             <div class="contacts__title-wrap">
                 <h2 class="contacts__title">Контакты</h2>

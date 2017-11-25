@@ -3080,8 +3080,7 @@ input[type="radio"]:checked + .radio::before {
 }
 
 .admin-my-work__attachment {
-  margin: 15px auto 25px 35px;
-  padding: 5px;
+  margin: 0 auto 25px 0;
   color: #00bfa5;
   cursor: pointer;
   -webkit-transition: color 400ms;
@@ -3096,10 +3095,6 @@ input[type="radio"]:checked + .radio::before {
 
 .admin-my-work__btn {
   margin-left: 0;
-}
-
-.admin-my-work input[type="file"] {
-  display: none;
 }
 
 @media (min-width: 768px) {
@@ -3786,6 +3781,10 @@ input[type="radio"]:checked + .radio::before {
     margin-left: 0;
   }
 
+  .feedback__form {
+    margin-bottom: auto;
+  }
+
   .about {
     -webkit-box-orient: horizontal;
     -webkit-box-direction: normal;
@@ -3884,7 +3883,7 @@ input[type="radio"]:checked + .radio::before {
   }
 
   .contacts {
-    height: 80vh;
+    height: 100vh;
   }
 
   .blog {
@@ -4020,11 +4019,28 @@ input[type="radio"]:checked + .radio::before {
   }
 
   .feedback {
-    padding-bottom: 120px;
+    background: #fff url(../img/bg/bg2-desktop.jpg) no-repeat 50% 100%;
+    padding-bottom: 0;
+  }
+
+  .who-am-i__title {
+    margin: 40px 0;
   }
 
   .skills__inner-item {
     margin: 0 16px 15px 16px;
+  }
+
+  .skills__title {
+    margin-bottom: 40px;
+  }
+
+  .skills__text {
+    margin-bottom: 40px;
+  }
+
+  .skills__item {
+    margin-bottom: 20px;
   }
 
   .contacts {
