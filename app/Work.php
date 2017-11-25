@@ -25,7 +25,6 @@ class Work extends Model
                 // берём поле file_name, очищаем от тегов
                 $this->name = strip_tags($request->name);
                 $this->technology = strip_tags($request->technology);
-                $this->work_url = strip_tags($request->work_url);
                 // сохраняем в базу для создания id
                 $this->save();
                 // забераем файл

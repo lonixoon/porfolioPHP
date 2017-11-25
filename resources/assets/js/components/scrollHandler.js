@@ -14,7 +14,7 @@ module.exports = (function () {
             $('html, body').animate({
                 scrollTop: pageStart
             }, {
-                // скорость прокрутки
+                // скорость анимации прокрутки
                 duration: 600,
                 complete: function () {
                     pageJump = false;
@@ -22,6 +22,7 @@ module.exports = (function () {
             });
         }
 
+        // добавляем событие на прокрутку колёсика мышки
         window.addEventListener('wheel', function (event) {
             let viewStart = $(window).scrollTop();
             if (!pageJump) {
@@ -51,21 +52,10 @@ module.exports = (function () {
         });
     }
 
-    // опеределяем по классу section-scroll длину массива
-    for (let i = 0; i < 10; i++) {
-        new ScrollHandler('section-' + i);
+    // вызываем функцию на каждый блок
+    for (let i = 0; i < 6; i++) {
+        if ($('section-' + i).length > 0) {
+            new ScrollHandler('section-' + i);
+        }
     }
-
-
-
-    // if ($('#header').length > 0 ||
-    //     $('#section2').length > 0 ||
-    //     $('#section3').length > 0 ||
-    //     $('#section4').length > 0) {
-    //     new ScrollHandler('header');
-    //     new ScrollHandler('section2');
-    //     new ScrollHandler('section3');
-    //     new ScrollHandler('section4');
-    // }
-
 });
