@@ -2,23 +2,24 @@
 
 namespace App\Http\Controllers;
 
-use App\About;
-use App\Blog;
+use App\Skill;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 
 
 class AboutController extends Controller
 {
     public function index()
     {
-        return view('user.about.about');
+        $skill = new Skill();
+        $data['last_skills'] = $skill->getLastSkills();
+        return view('user.about.about',  $data);
     }
 
 
     public function indexAdmin()
     {
-        $data['last_skills'] = About::getLastSkills();
+        $skill = new Skill();
+        $data['last_skills'] = $skill->getLastSkills();
         return view('admin.about.about', $data);
     }
 
@@ -26,7 +27,8 @@ class AboutController extends Controller
     // выводим данные для JS
     public function indexAPI()
     {
-        $data['last_skills'] = About::getLastSkills();
+        $skill = new Skill();
+        $data['last_skills'] = $skill->getLastSkills();
         return $data['last_skills'];
     }
 
@@ -39,8 +41,7 @@ class AboutController extends Controller
 //            'user_email' => 'email',
 //            'user_text' => 'required'
         ]);
-
-        $about = new About();
+        $about = new Skill();
         // вызываем метод и передаём в него запрос
         $about->saveToDB($request);
         // делаем редирект

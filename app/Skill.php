@@ -5,14 +5,14 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
 
-class About extends Model
+class Skill extends Model
 {
-    public static function getLastSkills()
+    public function getLastSkills()
     {
 //        // выгружаем запись с id 1
 //         return Test1::where('id', 1)->first();
         // выгружаем последнюю запись из базы
-        return About::all()->last();
+        return Skill::all()->last();
     }
 
     public function saveToDB($request)

@@ -2,11 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Blog;
 use App\Feedback;
 use App\Work;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 
 class WorkController extends Controller
 {
