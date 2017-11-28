@@ -15,7 +15,7 @@ module.exports = (function () {
                 scrollTop: pageStart
             }, {
                 // скорость анимации прокрутки
-                duration: 600,
+                duration: 700,
                 complete: function () {
                     pageJump = false;
                 }
@@ -54,7 +54,7 @@ module.exports = (function () {
 
     // вызываем функцию на каждый блок
     for (let i = 0; i < 6; i++) {
-        if ($('section-' + i).length > 0) {
+        if ($('#section-' + i).length > 0) {
             new ScrollHandler('section-' + i);
         }
     }

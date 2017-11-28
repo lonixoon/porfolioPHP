@@ -100,21 +100,23 @@ module.exports = (function () {
     let skills = $('.skills__circle--green');
 
     if (skills.length > 0) {
+        let baseRadius = ' 282.743338824px';
+        let percentRadius = 282.743338824 / 100;
         let renderSelectFluxes = function () {
             $.ajax({
                 url: '/api/about',
                 type: 'get'
             }).done(function (data) {
-                let html5 = 282.743338824 / 100 * data['html5'];
-                let css3 = 282.743338824 / 100 * data['css3'];
-                let js = 282.743338824 / 100 * data['js'];
-                let php = 282.743338824 / 100 * data['php'];
-                let mysql = 282.743338824 / 100 * data['mysql'];
-                let nodejs = 282.743338824 / 100 * data['nodejs'];
-                let mongodb = 282.743338824 / 100 * data['mongodb'];
-                let git = 282.743338824 / 100 * data['git'];
-                let gulp = 282.743338824 / 100 * data['gulp'];
-                let bower = 282.743338824 / 100 * data['bower'];
+                let html5 = percentRadius * data['html5'];
+                let css3 = percentRadius * data['css3'];
+                let js = percentRadius * data['js'];
+                let php = percentRadius * data['php'];
+                let mysql = percentRadius * data['mysql'];
+                let nodejs = percentRadius * data['nodejs'];
+                let mongodb = percentRadius * data['mongodb'];
+                let git = percentRadius * data['git'];
+                let gulp = percentRadius * data['gulp'];
+                let bower = percentRadius * data['bower'];
 
                 $(window).scroll(function () { // отслеживаем скролл
                     let wScroll = $(window).scrollTop(), // измеряем срок от верха страницы
@@ -125,41 +127,40 @@ module.exports = (function () {
 
                     if (startAnimate < 0) { // условие которое дожно выполнятся для старта анимации
                         skills.css({ // изменяем css свойство
-                            'stroke-dasharray': '0 282.743338824px'
+                            'stroke-dasharray': '0' + baseRadius
                         });
 
                     } else {
                         $('.skills__circle--html').css({ // изменяем css свойство
-                            'stroke-dasharray': html5 + ' 282.743338824px',
+                            'stroke-dasharray': html5 + baseRadius,
                         });
                         $('.skills__circle--css').css({ // изменяем css свойство
-                            'stroke-dasharray': css3 + ' 282.743338824px',
+                            'stroke-dasharray': css3 + baseRadius,
                         });
                         $('.skills__circle--js').css({ // изменяем css свойство
-                            'stroke-dasharray': js + ' 282.743338824px',
+                            'stroke-dasharray': js + baseRadius,
                         });
                         $('.skills__circle--php').css({ // изменяем css свойство
-                            'stroke-dasharray': php + ' 282.743338824px',
+                            'stroke-dasharray': php + baseRadius,
                         });
                         $('.skills__circle--sql').css({ // изменяем css свойство
-                            'stroke-dasharray': mysql + ' 282.743338824px',
+                            'stroke-dasharray': mysql + baseRadius,
                         });
                         $('.skills__circle--node').css({ // изменяем css свойство
-                            'stroke-dasharray': nodejs + ' 282.743338824px',
+                            'stroke-dasharray': nodejs + baseRadius,
                         });
                         $('.skills__circle--mongo').css({ // изменяем css свойство
-                            'stroke-dasharray': mongodb + ' 282.743338824px',
+                            'stroke-dasharray': mongodb + baseRadius,
                         });
                         $('.skills__circle--git').css({ // изменяем css свойство
-                            'stroke-dasharray': git + ' 282.743338824px',
+                            'stroke-dasharray': git + baseRadius,
                         });
                         $('.skills__circle--gulp').css({ // изменяем css свойство
-                            'stroke-dasharray': gulp + ' 282.743338824px',
+                            'stroke-dasharray': gulp + baseRadius,
                         });
                         $('.skills__circle--bower').css({ // изменяем css свойство
-                            'stroke-dasharray': bower + ' 282.743338824px',
+                            'stroke-dasharray': bower + baseRadius,
                         });
-
                     }
                 });
             })
@@ -380,7 +381,7 @@ module.exports = (function () {
                 scrollTop: pageStart
             }, {
                 // скорость анимации прокрутки
-                duration: 600,
+                duration: 700,
                 complete: function () {
                     pageJump = false;
                 }
@@ -419,7 +420,7 @@ module.exports = (function () {
 
     // вызываем функцию на каждый блок
     for (let i = 0; i < 6; i++) {
-        if ($('section-' + i).length > 0) {
+        if ($('#section-' + i).length > 0) {
             new ScrollHandler('section-' + i);
         }
     }

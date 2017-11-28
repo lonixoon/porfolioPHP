@@ -47,7 +47,7 @@ Route::group(
 
 //    /* тестовые страницы */
 //    Route::get('/home', 'HomeController@index')->name('home');
-//    Route::get('/test1', 'Test1Controller@index');
+    Route::get('/test1', 'Test1Controller@index');
 //    Route::get('/test1/create', 'Test1Controller@create');
 //    Route::get('/test1/last', 'Test1Controller@last');
 //    Route::post('/test1/send', 'Test1Controller@send');
