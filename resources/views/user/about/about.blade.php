@@ -32,6 +32,7 @@
             <ul class="skills__list">
                 <li class="skills__item">
                     <h4 class="skills__type">Frontend</h4>
+                    <div id="getSkills" style="display: none">{{ $last_skills }}</div>
                     <ul class="skills__inner-list">
                         <li class="skills__inner-item">
                             <svg class="skills__circle svg skills__circle--gray">

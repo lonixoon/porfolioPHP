@@ -1,7 +1,5 @@
 @extends('layouts.admin')
 
 @section('content')
-    <div>
-
-    </div>
+    <div>Температура в Новосибирске: {{ $title }}</div>
 @endsection
