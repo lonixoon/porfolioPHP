@@ -6,36 +6,23 @@
 //////////////  (положение экрана отслеживается)  //////////////////////
 module.exports = (function () {
     $(window).scroll(function () {
-        let svg = $('.who-am-i__icon-author-photo'); // ищем изображение
-        // if (window.location.toString().indexOf('/about') > 0) {
+        // ищем изображение
+        let svg = $('.who-am-i__icon-author-photo');
+        // ищем следующий блок для отмены анимации
+        let nextBlock = $('#section-2');
 
         if (svg.length > 0) {
 
             let
                 wScroll = $(window).scrollTop(), // слежение скрола от верха документа
-
+                nextBlockPos = nextBlock.offset().top, // ищем позицию элемента от верха страницы
                 svgPath = $(svg).find('.who-am-i__icon-author-photo-body'), // ищем группы в нашем изображении
                 svgPos = svg.offset().top, // отслеживаем положение svg от верха страницы
                 windowMargin = $(window).height() / 2, // задаём запас что бы анимация начаналась заранее, когда останится пол окна
-                startAnimate = Math.ceil(wScroll - svgPos + windowMargin); //выставляем точку начала анимации - от общего скрола отнимем позицию картинки и прибавим пол страницы
+                startAnimate = Math.ceil(wScroll - svgPos + windowMargin), //выставляем точку начала анимации - от общего скрола отнимем позицию картинки и прибавим пол страницы
+                endAnimate = Math.ceil(wScroll - nextBlockPos + windowMargin); //выставляем точку конца анимации
 
-
-            // if (startAnimate > 0) { // старт анимации если мы докрутили до нужного места
-            //     // console.log('start', startAnimate);
-            //     svgPath.stop().animate(
-            //         {
-            //             'stroke-dashoffset' : '0'
-            //         },
-
-            //         3500,
-
-            //         'linear',
-
-            //         function () {
-            //             console.log('Конец анимации');
-            //         }
-            //     );
-            if (startAnimate > 0) { // старт анимации если мы докрутили до нужного места
+            if (startAnimate > 0 && endAnimate < 0) { // старт анимации если мы докрутили до нужного места
                 svgPath.css({
                     'stroke-dashoffset': '0'
                 });
