@@ -16,24 +16,6 @@ class Test1Controller extends Controller
 //        $this->middleware('auth');
 //    }
 
-//    public function index()
-//    {
-//        return view('test.test1');
-//    }
-//    public function index()
-//    {
-//        $ch = curl_init();
-//// установка URL и других необходимых параметров
-//        curl_setopt($ch, CURLOPT_URL, "https://www.gismeteo.ru/weather-novosibirsk-4690/");
-//        curl_setopt($ch, CURLOPT_HEADER, 0);
-////        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-//
-//// загрузка страницы и выдача её браузеру
-//        curl_exec($ch);
-//// завершение сеанса и освобождение ресурсов
-//        curl_close($ch);
-//    }
-
     public function index()
     {
 
@@ -41,8 +23,25 @@ class Test1Controller extends Controller
         $link = 'http://ngs.ru/';
         $parse = new Test1();
         // передаём адрес сайта в медот и записываем ресультат в $data
-        $data = $parse->getContent($link);
+        $data = $parse->getContentNgs($link);
         // возвращаем шаблон дабвляем отправляем в него массив с данными
-        return view('test.test1', $data);
+//        return view('test.test1', $data);
+        return dump($data);
     }
+
+    /*public function index()
+    {
+        // создание нового ресурса cURL
+        $ch = curl_init();
+
+        // установка URL и других необходимых параметров
+        curl_setopt($ch, CURLOPT_URL, "https://api.vk.com/method/users.get?user_ids=10768832&fields=bdate&v=5.69");
+        curl_setopt($ch, CURLOPT_HEADER, 0);
+
+        // загрузка страницы и выдача её браузеру
+        curl_exec($ch);
+
+        // завершение сеанса и освобождение ресурсов
+        curl_close($ch);
+    }*/
 }

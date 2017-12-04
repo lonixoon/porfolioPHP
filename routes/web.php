@@ -30,6 +30,9 @@ Route::get('/api/about', 'AboutController@indexAPI');
 Route::get('/api/blog', 'BlogController@indexAPI');
 Route::get('/api/work', 'WorkController@indexAPI');
 
+
+Route::get('/test1', 'Test1Controller@index');
+
 /* маршруты требующие авторизацию */
 Route::group(
     ['middleware' => 'auth'], function () {
@@ -47,7 +50,7 @@ Route::group(
 
 //    /* тестовые страницы */
 //    Route::get('/home', 'HomeController@index')->name('home');
-    Route::get('/test1', 'Test1Controller@index');
+//    Route::get('/test1', 'Test1Controller@index');
 //    Route::get('/test1/create', 'Test1Controller@create');
 //    Route::get('/test1/last', 'Test1Controller@last');
 //    Route::post('/test1/send', 'Test1Controller@send');

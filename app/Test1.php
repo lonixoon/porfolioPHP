@@ -18,7 +18,7 @@ class Test1 extends Model
      * @throws \Exception
      */
 //    public function getContent($parser, $link)
-    public function getContent($link)
+    public function getContentNgs($link)
     {
         // Get html remote text.
         $html = file_get_contents($link);
@@ -33,15 +33,14 @@ class Test1 extends Model
 //            </html>';
 
         // Create new instance for parser.
-//        $crawler = new Crawler(null, $link);
-        $crawler = new Crawler($html);
-//        $crawler->addHtmlContent($html, 'UTF-8');
+        $crawler = new Crawler(null, $link);
+        $crawler->addHtmlContent($html, 'UTF-8');
 
-        // Get title text.
-//        $title = $crawler->filter('[class=ngs-informers__info-text-value]')->each(function (Crawler $node, $i) {
-//            return $node->text();
-//        });
-        $title = $crawler->filter('[class=ngs-informers__info-text-value]')->text();
+//         Get title text.
+        $title = $crawler->filter('[class=ngs-article__tit]')->each(function (Crawler $node, $i) {
+            return $node->text();
+        });
+//        $title = $crawler->filter('[class=ngs-informers__info-text-value]')->text();
 
         // If exist settings for teaser.
 //        if (!empty(trim($parser->settings->teaser))) {
@@ -54,9 +53,10 @@ class Test1 extends Model
 //        });
 
         // Get body text.
-//        $body = $crawler->filter($parser->settings->body)->each(function (Crawler $node, $i) {
+//        $body = $crawler->filter('[class=ngs-article]')->each(function (Crawler $node, $i) {
 //            return $node->html();
 //        });
+//        $body = $crawler->filter('[class=ngs-article]')->text();
 
         $content = [
 //            'link' => $link,
