@@ -32,6 +32,8 @@ Route::get('/api/work', 'WorkController@indexAPI');
 
 
 Route::get('/test1', 'Test1Controller@index');
+Route::get('/test2', 'Test2Controller@index');
+Route::get('/test3', 'Test2Controller@index3');
 
 /* маршруты требующие авторизацию */
 Route::group(

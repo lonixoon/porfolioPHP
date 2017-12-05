@@ -26,30 +26,35 @@ let
     // приклеенный сайдбар для блога
     sidebarSticky = require('./components/sidebarSticky'),
     // плавная прокрутка на 1 экран вниз
-    scrollHandler = require('./components/scrollHandler');
+    scrollHandler = require('./components/scrollHandler'),
+    // парсер тест
+    textParser = require('./components/textParser');
 
-// сохранение SVG в LocalStorage
-saveSvgToLocalStorageSVG();
-// открывашка главного меню
-mainMenuOpen();
-// слайде на странице work
-slider();
-// эффект паралакса на главной странице
-mouseParallax();
-// плавный скролл до якоря
-smoothScroll();
-// зарисовка SVG картинки при проуртки
-drawSvgByScroll();
-// заливка скилов при прокрутки
-fillSkillByScroll();
-// переворачивалка для формы на главной странице
-flipLoginBlock();
-// выезжающий по свайпу сайдбар для мобильной версии
-sidebarOutput();
-// приклеенный сайдбар для блога
-sidebarSticky();
+// // сохранение SVG в LocalStorage
+// saveSvgToLocalStorageSVG();
+// // открывашка главного меню
+// mainMenuOpen();
+// // слайде на странице work
+// slider();
+// // эффект паралакса на главной странице
+// mouseParallax();
+// // плавный скролл до якоря
+// smoothScroll();
+// // зарисовка SVG картинки при проуртки
+// drawSvgByScroll();
+// // заливка скилов при прокрутки
+// fillSkillByScroll();
+// // переворачивалка для формы на главной странице
+// flipLoginBlock();
+// // выезжающий по свайпу сайдбар для мобильной версии
+// sidebarOutput();
+// // приклеенный сайдбар для блога
+// sidebarSticky();
 // плавная прокрутка на 1 экран вниз
-scrollHandler();
+// scrollHandler();
+
+
+textParser();
 
 
 
