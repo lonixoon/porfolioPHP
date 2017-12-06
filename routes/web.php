@@ -30,10 +30,10 @@ Route::get('/api/about', 'AboutController@indexAPI');
 Route::get('/api/blog', 'BlogController@indexAPI');
 Route::get('/api/work', 'WorkController@indexAPI');
 
-
 Route::get('/test1', 'Test1Controller@index');
+
 Route::get('/test2', 'Test2Controller@index');
-Route::get('/test3', 'Test2Controller@index3');
+Route::post('/test2/send', 'Test2Controller@getFile');
 
 /* маршруты требующие авторизацию */
 Route::group(
