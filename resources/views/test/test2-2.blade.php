@@ -2,18 +2,18 @@
 
 @section('content')
     <ul class="problem-list">
-        @foreach ($list as $key2 => $value2)
+        @foreach ($list as $key => $value)
             <li class="problem-list__item ">
-                <div>{{$key2}}</div>
+                <div>{{$key}}</div>
                 <div>
                     <p>sites:</p>
                     <div>
-                        <?php $numItems = count($value2); $i = 0; ?>
-                        @foreach($value2 as $key3 => $value3)
+                        <?php $numItems = count($value); $i = 0; ?>
+                        @foreach($value as $key2 => $value2)
                             @if(++$i === $numItems)
-                                <span>{{$value3}}</span>
+                                <span>{{$value2}}</span>
                             @else
-                                <span>{{$value3}},</span>
+                                <span>{{$value2}},</span>
                             @endif
                         @endforeach
                     </div>
