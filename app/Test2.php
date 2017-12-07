@@ -265,10 +265,8 @@ class Test2 extends Model
         return html_entity_decode(iconv("windows-1251", "utf-8", $document), ENT_QUOTES, "UTF-8");
     }
 
-    public function getArray($file)
+    public function getArray($rawText)
     {
-        // преобразуем из rtf в txt
-        $rawText = $this->rtf2text($file);
         // создаем массив из строк файла
         $arrRows = explode("\n", $rawText);
         // убераем лишние пробелы
@@ -279,4 +277,60 @@ class Test2 extends Model
 
         return $arrSlice;
     }
+
+    public function getData($array)
+    {
+        // ищем строку где идёт интерграция каталога
+        $catalog = array_search('----------------------------------------- Intagrate catalog to stores ---------------------------------------', $array);
+        // срезаем массив по строке $catalog
+        $catalogOnly = array_slice($array, $catalog + 1);
+
+        // переменная под название сайта
+        $siteName = '';
+        // массив под все найденые проблемы (тадосы, каталоги и тд.)
+        $arrayProblem = [];
+        //  массив с проблемами - ситы
+        $arrayProblemToSite = [];
+        // итоговый массив
+        $result = [];
+
+        // перебираем массив $catalogOnly и отделяем ситы от проблем
+        foreach ($catalogOnly as $key => $value) {
+            // если в значении элемента массива есть слово Site
+            if (explode(' ', $value)[0] == 'Site') {
+                // то сайт заносим в переменную
+                $siteName = $value;
+            } else {
+                // убераем лишние символы (если они там есть), из названия элемента с проблемой
+                $nameReplaceProblem = str_replace('- 0', '', $catalogOnly[$key]);
+                $nameReplaceProblem = explode('-  Date:', $nameReplaceProblem)[0];
+
+                // помещаем все элемента массива кроме сайтов в отдельны массив
+                $arrayProblem[] = $nameReplaceProblem;
+                // владываем в массив значение: проблема - сит
+                $arrayProblemToSite[] = $nameReplaceProblem . '|' . explode(' -', $siteName)[0];
+            }
+        }
+
+        // перебираем уникальные проблемы
+        foreach (array_unique($arrayProblem) as $value) {
+            // перебираем массив со всеми проблемами где видно ситы
+            foreach ($arrayProblemToSite as $value2) {
+                // ищим совпадения в каждой строчке по всем проблемам, с уникальной проблемой
+                if ($value == explode('|', $value2)[0]) {
+                    // берём строку и оставляем номер сайта
+                    $siteNumber = explode('|', $value2)[1];
+                    // и убераем слово site и пробелы
+                    $siteNumber = explode('  ', $siteNumber)[1];
+
+                    // записываем в результирующий массив по уникальной проблеме вкладываем очередной сит
+                    $result[$value][] = $siteNumber;
+                }
+            }
+        }
+
+        return $result;
+    }
+
+
 }
