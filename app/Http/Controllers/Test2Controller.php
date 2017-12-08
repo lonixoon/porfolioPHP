@@ -9,13 +9,17 @@ class Test2Controller extends Controller
 {
     public function index()
     {
-        return view('test.test2');
+        return view('test.DailyStatusHD.test2');
     }
 
     public function getFile(Request $rtf)
     {
+        $this->validate($rtf, [
+            'file' => 'mimes:rtf'
+        ]);
+
         // получаем файл
-        $file = $rtf->file('rtf');
+        $file = $rtf->file('file');
         // создаём новую модель
         $test2 = new Test2();
         // Передаём файл -> получаем очищенный от всех тегов текст
@@ -26,7 +30,7 @@ class Test2Controller extends Controller
         $result['list'] = $test2->getData($array);
 //        dump($result);
 
-        return view('test.test2-2', $result);
+        return view('test.DailyStatusHD.test2-2', $result);
     }
 }
 

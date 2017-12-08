@@ -302,8 +302,11 @@ class Test2 extends Model
                 $siteName = $value;
             } else {
                 // убераем лишние символы (если они там есть), из названия элемента с проблемой
-                $nameReplaceProblem = str_replace('- 0', '', $catalogOnly[$key]);
-                $nameReplaceProblem = explode('-  Date:', $nameReplaceProblem)[0];
+//                $nameReplaceProblem = str_replace('- 0', '', $catalogOnly[$key]);
+                $nameReplaceProblem = $catalogOnly[$key];
+                $nameReplaceProblem = explode('Date:', $nameReplaceProblem)[0];
+                $nameReplaceProblem = str_replace('- 0', '', $nameReplaceProblem);
+                $nameReplaceProblem = str_replace('Catalog Not Integrated     -', 'Catalog Not Integrated', $nameReplaceProblem);
 
                 // помещаем все элемента массива кроме сайтов в отдельны массив
                 $arrayProblem[] = $nameReplaceProblem;

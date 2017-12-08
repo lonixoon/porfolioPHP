@@ -1,4 +1,4 @@
-@extends('test.test2')
+@extends('test.DailyStatusHD.test2')
 
 @section('content')
     <ul class="problem-list">
