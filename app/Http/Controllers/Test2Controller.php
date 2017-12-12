@@ -9,13 +9,13 @@ class Test2Controller extends Controller
 {
     public function index()
     {
-        return view('test.DailyStatusHD.test2');
+        return view('test.DailyStatusHD.test2-1');
     }
 
     public function getFile(Request $rtf)
     {
         $this->validate($rtf, [
-            'file' => 'mimes:rtf'
+            'file' => 'required | mimes:rtf'
         ]);
 
         // получаем файл
@@ -28,7 +28,8 @@ class Test2Controller extends Controller
         $array = $test2->getArray($text);
         // Передаём очищенный массив -> получаем готовые данные
         $result['list'] = $test2->getData($array);
-//        dump($result);
+        // Получаем количство тикетов
+//        $result['numberOfRecords'] = count($result['list']);
 
         return view('test.DailyStatusHD.test2-2', $result);
     }

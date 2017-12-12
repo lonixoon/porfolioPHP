@@ -334,6 +334,8 @@ class Test2 extends Model
 
         return $result;
     }
-
-
 }
+
+// $arrSite = $filtered = array_filter($catalogOnly, function ($item) {
+//            return preg_match('/T.*$/', $item);
+//        });

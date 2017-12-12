@@ -40,7 +40,8 @@
             border: none;
             border-radius: 3px;
             padding: 7px;
-            /*cursor: pointer;*/
+            text-decoration: none;
+            cursor: pointer;
         }
 
         .input-file {
@@ -96,10 +97,16 @@
         }
 
         .error-red {
-            background: #eda99e;
-            color: #4c2123;
+            display: inline-block;
+            padding: 10px;
+            border: 1px solid #f0726d;
             border-radius: 3px;
-            padding: 7px;
+            background: #FCDCDC;
+            color: #f05050;
+        }
+
+        .problem-list__title {
+            cursor: text;
         }
 
         .input-file:hover {
@@ -111,31 +118,15 @@
             background-color: #5bab96;
         }
     </style>
+
 </head>
 <body>
 <div class="container">
     <h3>Разбор файла Daily Status HelpDesk по активностям (проблемам)</h3>
-    <form action="{{ url('/test2') }}" method="post" enctype="multipart/form-data">
-        {{ csrf_field() }}
-        {{--<p><input class="btn" name="rtf" type="file" required></p>--}}
-        <div class="input-file">
-            <div class="input-file__label">Файл не выбран</div>
-            <div class="input-file__btn">Обзор</div>
-            <input type="file" accept=".rtf" name="file" id="upload" onchange="getFileName(this.value);" required>
-        </div>
-        <p>
-            <button class="btn" type="submit">Загрузить</button>
-        </p>
-    </form>
-    @if (count($errors) > 0)
-        <div>
-            @foreach ($errors->all() as $error)
-                <span class="error-red">Ошибка: {{ $error }}</span>
-            @endforeach
-        </div>
-    @endif
+    @yield('form')
     @yield('content')
 </div>
+{{--<script src="{{ asset('js/main.js') }}"></script>--}}
 <script>
     function getFileName(str) {
         let i;
@@ -149,7 +140,22 @@
         let uploaded = document.querySelector('.input-file__label');
         uploaded.innerHTML = filename;
     }
+
+    function checkNumber() {
+        let checkboxAll = document.querySelectorAll('input[type=checkbox]').length;
+        let checkboxChecked = document.querySelectorAll('input[type=checkbox]:checked').length;
+        document.getElementById("checkboxNoChecked").innerHTML = checkboxAll;
+        let tiketLeft = checkboxAll - checkboxChecked;
+        let checkboxCheckDiv = document.getElementById("checkboxChecked");
+        if (tiketLeft <= 4 && tiketLeft >= 2) {
+            checkboxCheckDiv.innerHTML = tiketLeft + ' тикета';
+        } else if (tiketLeft === 1) {
+            checkboxCheckDiv.innerHTML = tiketLeft + ' тикет';
+        } else {
+            checkboxCheckDiv.innerHTML = tiketLeft + ' тикетов';
+        }
+    }
+    checkNumber();
 </script>
-{{--<script src="{{ asset('js/main.js') }}"></script>--}}
 </body>
 </html>

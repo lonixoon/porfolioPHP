@@ -34,7 +34,7 @@ Route::get('/test1', 'Test1Controller@index');
 
 Route::get('/test2', 'Test2Controller@index');
 //Route::post('/test2/send', 'Test2Controller@getFile');
-Route::post('/test2', 'Test2Controller@getFile');
+Route::post('/test2/result', 'Test2Controller@getFile');
 
 /* маршруты требующие авторизацию */
 Route::group(
