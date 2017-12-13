@@ -156,6 +156,7 @@
         }
     }
     checkNumber();
+
 </script>
 </body>
 </html>
