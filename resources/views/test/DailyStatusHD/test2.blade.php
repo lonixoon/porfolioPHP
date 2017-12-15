@@ -118,7 +118,6 @@
             background-color: #5bab96;
         }
     </style>
-
 </head>
 <body>
 <div class="container">
@@ -143,20 +142,22 @@
 
     function checkNumber() {
         let checkboxAll = document.querySelectorAll('input[type=checkbox]').length;
-        let checkboxChecked = document.querySelectorAll('input[type=checkbox]:checked').length;
-        document.getElementById("checkboxNoChecked").innerHTML = checkboxAll;
-        let tiketLeft = checkboxAll - checkboxChecked;
-        let checkboxCheckDiv = document.getElementById("checkboxChecked");
-        if (tiketLeft <= 4 && tiketLeft >= 2) {
-            checkboxCheckDiv.innerHTML = tiketLeft + ' тикета';
-        } else if (tiketLeft === 1) {
-            checkboxCheckDiv.innerHTML = tiketLeft + ' тикет';
-        } else {
-            checkboxCheckDiv.innerHTML = tiketLeft + ' тикетов';
+        if (checkboxAll > 0) {
+            let checkboxChecked = document.querySelectorAll('input[type=checkbox]:checked').length;
+            document.getElementById("checkboxNoChecked").innerHTML = checkboxAll;
+            let tiketLeft = checkboxAll - checkboxChecked;
+            let checkboxCheckDiv = document.getElementById("checkboxChecked");
+            if (tiketLeft <= 4 && tiketLeft >= 2) {
+                checkboxCheckDiv.innerHTML = tiketLeft + ' тикета';
+            } else if (tiketLeft === 1) {
+                checkboxCheckDiv.innerHTML = tiketLeft + ' тикет';
+            } else {
+                checkboxCheckDiv.innerHTML = tiketLeft + ' тикетов';
+            }
         }
+
     }
     checkNumber();
-
 </script>
 </body>
 </html>
