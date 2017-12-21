@@ -1547,6 +1547,10 @@ input[type="radio"]:checked + .radio::before {
   width: 100%;
 }
 
+.authorization__login {
+  position: relative;
+}
+
 .authorization__test {
   margin-bottom: 25px;
 }
@@ -1566,6 +1570,11 @@ input[type="radio"]:checked + .radio::before {
   height: 46px;
   margin: 0 20px 20px 20px;
   cursor: text;
+}
+
+.authorization__input-text-wrap--error {
+  border: 2px solid #c80201;
+  border-radius: 5px;
 }
 
 .authorization__icon-wrap {

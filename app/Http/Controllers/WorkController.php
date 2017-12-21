@@ -27,9 +27,9 @@ class WorkController extends Controller
     {
         // делаем валидацию полей
         $this->validate($request, [
-            'name' => 'required',
-            'technology' => 'required',
-            'photo' => 'required | image'
+            'work_name' => 'required',
+            'work_technology' => 'required',
+            'work_photo' => 'required | image'
         ]);
 
         $work = new Work();

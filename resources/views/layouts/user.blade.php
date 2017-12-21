@@ -3,26 +3,23 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
-
-    <link href="{{ asset('css/main.css') }}" rel="stylesheet">
-    <script src="{{ asset('lib/jquery-3.2.1.min.js') }}"></script>
+    @include('layouts.css')
     <title>{{ config('app.name', 'Портфолио') }}</title>
 </head>
 <body class="page">
-<div class="parallax">
-    <div class="parallax__layer parallax__layer--scroll"><img src="{{ asset('img/parallax/layer_1.png') }}"></div>
-    <div class="parallax__layer parallax__layer--scroll"><img src="{{ asset('img/parallax/layer_2.png') }}"></div>
-    <div class="parallax__layer parallax__layer--scroll"><img src="{{ asset('img/parallax/layer_3.png') }}"></div>
-    <div class="parallax__layer parallax__layer--scroll"><img src="{{ asset('img/parallax/layer_4.png') }}"></div>
-    <div class="parallax__layer parallax__layer--scroll"><img src="{{ asset('img/parallax/layer_5.png') }}"></div>
-    <div class="parallax__layer parallax__layer--scroll"><img src="{{ asset('img/parallax/layer_6.png') }}"></div>
-    <div class="parallax__layer parallax__layer--scroll"><img src="{{ asset('img/parallax/layer_7.png') }}"></div>
-    <div class="parallax__layer parallax__layer--scroll"><img src="{{ asset('img/parallax/layer_8.png') }}"></div>
-</div>
 <header id="section-0" class="page__header page__header--inner-page">
+    <div class="parallax">
+        <div class="parallax__layer parallax__layer--scroll"><img src="{{ asset('img/parallax/layer_1.png') }}"></div>
+        <div class="parallax__layer parallax__layer--scroll"><img src="{{ asset('img/parallax/layer_2.png') }}"></div>
+        <div class="parallax__layer parallax__layer--scroll"><img src="{{ asset('img/parallax/layer_3.png') }}"></div>
+        <div class="parallax__layer parallax__layer--scroll"><img src="{{ asset('img/parallax/layer_4.png') }}"></div>
+        <div class="parallax__layer parallax__layer--scroll"><img src="{{ asset('img/parallax/layer_5.png') }}"></div>
+        <div class="parallax__layer parallax__layer--scroll"><img src="{{ asset('img/parallax/layer_6.png') }}"></div>
+        <div class="parallax__layer parallax__layer--scroll"><img src="{{ asset('img/parallax/layer_7.png') }}"></div>
+        <div class="parallax__layer parallax__layer--scroll"><img src="{{ asset('img/parallax/layer_8.png') }}"></div>
+    </div>
     <div class="social">
         <ul class="social__list">
             <li class="social__item"><a href="http://vk.com/lonixon" target="_blank"
@@ -120,6 +117,6 @@
         <p class="about-footer__text">Свёрстано мной.</p>
     </div>
 </footer>
-<script src="{{ asset('js/main.js') }}"></script>
+@include('layouts.js')
 </body>
 </html>

@@ -15,9 +15,11 @@ class CreateWorksTable extends Migration
     {
         Schema::create('works', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name');
-            $table->string('technology');
-            $table->string('photo');
+            $table->string('work_name')->nullable();
+            $table->string('work_technology')->nullable();
+            $table->string('work_photo')->nullable();
+            $table->string('work_url')->nullable();
+            $table->integer('active')->default('1');
             $table->timestamps();
         });
     }

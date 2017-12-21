@@ -14,9 +14,9 @@
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
-//Route::get('/', function () {
-//    return view('welcome');
-//});
+Route::get('/', function () {
+    return view('welcome');
+});
 
 Auth::routes();
 
@@ -30,12 +30,12 @@ Route::get('/api/about', 'AboutController@indexAPI');
 Route::get('/api/blog', 'BlogController@indexAPI');
 Route::get('/api/work', 'WorkController@indexAPI');
 
-Route::get('/test1', 'Test1Controller@index');
+//Route::get('/test1', 'Test1Controller@index');
 
 Route::get('/test2', 'Test2Controller@index');
 Route::post('/test2/result', 'Test2Controller@getFile');
 
-Route::get('/test3', 'TestPortalController@index');
+//Route::get('/test3', 'TestPortalController@index');
 
 /* маршруты требующие авторизацию */
 Route::group(

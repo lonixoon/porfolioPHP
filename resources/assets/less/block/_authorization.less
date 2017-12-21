@@ -36,6 +36,19 @@
 		width: 100%;
 	}
 
+	&__login {
+		position: relative;
+	}
+
+	//&__error-wrap {
+	//	display: flex;
+	//	position: absolute;
+	//	bottom: -22px;
+	//	left: 10px;
+	//	color: red;
+	//	text-align: center;
+	//}
+
 	&__test {
 		margin-bottom: 25px;
 	}
@@ -51,6 +64,11 @@
 		height: 46px;
 		margin: 0 20px 20px 20px;
 		cursor: text;
+
+		&--error {
+			border: 2px solid #c80201;
+			border-radius: 5px;
+		}
 	}
 
 	&__icon-wrap {
@@ -134,6 +152,11 @@
 			margin-bottom: 25px;
 		}
 
+		//&__error-wrap {
+		//	bottom: -26px;
+		//	left: 12px;
+		//}
+
 		&__test {
 			margin-bottom: 30px;
 		}
@@ -156,6 +179,10 @@
 			width: 380px;
 		}
 
+		//&__error-wrap {
+		//	left: 29px;
+		//}
+
 		&__title {
 			font-size: 36px;
 		}
@@ -177,5 +204,9 @@
 		&__title-wrap {
 			margin: 8px 0;
 		}
+
+		//&__error-wrap {
+		//	left: 19px;
+		//}
 	}
 }

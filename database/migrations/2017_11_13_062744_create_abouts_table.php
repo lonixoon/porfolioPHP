@@ -15,16 +15,16 @@ class CreateAboutsTable extends Migration
     {
         Schema::create('abouts', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('html5');
-            $table->integer('css3');
-            $table->integer('js');
-            $table->integer('php');
-            $table->integer('mysql');
-            $table->integer('nodejs');
-            $table->integer('mongodb');
-            $table->integer('git');
-            $table->integer('gulp');
-            $table->integer('bower');
+            $table->integer('html5')->nullable();
+            $table->integer('css3')->nullable();
+            $table->integer('js')->nullable();
+            $table->integer('php')->nullable();
+            $table->integer('mysql')->nullable();
+            $table->integer('nodejs')->nullable();
+            $table->integer('mongodb')->nullable();
+            $table->integer('git')->nullable();
+            $table->integer('gulp')->nullable();
+            $table->integer('bower')->nullable();
             $table->timestamps();
         });
     }

@@ -13,13 +13,13 @@
 
             @foreach ($all_works as $value)
                 <li class="my-work__item">
-                    <div class="my-work__img"><img src="{{ asset($value->photo) }}" alt="{{ $value->name }}"></div>
+                    <div class="my-work__img"><img src="{{asset($value->work_photo)}}" alt="{{$value->work_name}}"></div>
                     <div class="my-work__info">
                         <div class="my-work__subtitle-wrap">
-                            <h3 class="my-work__subtitle">{{ $value->name }}</h3>
+                            <h3 class="my-work__subtitle">{{$value->work_name}}</h3>
                         </div>
-                        <p class="my-work__technologies">{{ $value->technology }}</p><a
-                                href="{{ $value->work_url }}" target="_blank"
+                        <p class="my-work__technologies">{{$value->work_technology}}</p><a
+                                href="{{$value->work_url}}" target="_blank"
                                 class="my-work__btn btn btn--green">Посмотреть сайт
                             <svg class="my-work__icon-link">
                                 <use xlink:href="#icon-link"></use>

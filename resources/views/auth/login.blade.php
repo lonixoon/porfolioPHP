@@ -3,8 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <link href="{{ asset('css/main.css') }}" rel="stylesheet">
-    <script src="{{ asset('lib/jquery-3.2.1.min.js') }}"></script>
+    @include('layouts.css')
     <title>Портфолио</title>
 </head>
 <body class="page page--index">
@@ -25,6 +24,6 @@
         </div>
     </div>
 </header>
-<script src="{{ asset('js/main.js') }}"></script>
+@include('layouts.js')
 </body>
 </html>

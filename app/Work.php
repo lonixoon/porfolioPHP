@@ -23,18 +23,19 @@ class Work extends Model
             // транзакция для сохранения целосности информации, если ошибка данные в базе не запишутся
             DB::transaction(function () use ($request) {
                 // берём поле file_name, очищаем от тегов
-                $this->name = strip_tags($request->name);
-                $this->technology = strip_tags($request->technology);
+                $this->work_name = strip_tags($request->work_name);
+                $this->work_technology = strip_tags($request->work_technology);
+                $this->work_url = strip_tags($request->work_url);
                 // сохраняем в базу для создания id
                 $this->save();
                 // забераем файл
-                $file = $request->file('photo');
+                $file = $request->file('work_photo');
                 // создаём имя файла в соотвествии с id записи и оригинальным разширением
                 $fileName = $this->id . '.' . $file->getClientOriginalExtension();
                 // перемещаем фал в папку img на сервер
                 $file->move('img/work', $fileName);
                 // записываем путь до файла
-                $this->photo = '/img/work/' . $fileName;
+                $this->work_photo = '/img/work/' . $fileName;
                 // сохраняем в базу всю инфу
                 $this->save();
             });
