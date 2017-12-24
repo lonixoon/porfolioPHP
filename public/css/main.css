@@ -575,7 +575,7 @@ body {
   width: 100%;
   height: 100%;
   line-height: 1.6;
-  background: #C5CEC9;
+  background: #00bfa5;
 }
 
 img {
@@ -1149,26 +1149,37 @@ input[type="radio"]:checked + .radio::before {
      -moz-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  height: 100%;
-  width: 100%;
-  background-color: #00bfa5;
-  z-index: 9999;
-}
-
-.preloader__bar {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -moz-box;
-  display: -ms-flexbox;
-  display: flex;
   -webkit-box-align: center;
   -webkit-align-items: center;
      -moz-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  font-family: "arial";
-  font-size: 40px;
-  color: #fff;
+  height: 100%;
+  width: 100%;
+  z-index: 9999;
+}
+
+.preloader__circle {
+  -webkit-transition: stroke-dasharray 500ms;
+  -o-transition: stroke-dasharray 500ms;
+  -moz-transition: stroke-dasharray 500ms;
+  transition: stroke-dasharray 500ms;
+}
+
+.preloader__circle--big {
+  stroke-dasharray: 0 439.82288;
+}
+
+.preloader__circle--middle {
+  stroke-dasharray: 0 345.57512;
+}
+
+.preloader__circle--small {
+  stroke-dasharray: 0 251.32736;
+}
+
+.preloader--hide {
+  visibility: hidden;
 }
 
 .page {
@@ -1197,6 +1208,16 @@ input[type="radio"]:checked + .radio::before {
      -moz-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  opacity: 1;
+  -webkit-transition: opacity 1500ms;
+  -o-transition: opacity 1500ms;
+  -moz-transition: opacity 1500ms;
+  transition: opacity 1500ms;
+  background-color: #C5CEC9;
+}
+
+.page__header--hide {
+  opacity: 0;
 }
 
 .page__icon-corner {
@@ -1305,6 +1326,15 @@ input[type="radio"]:checked + .radio::before {
       -ms-flex-align: center;
           align-items: center;
   background-color: #fff;
+  opacity: 1;
+  -webkit-transition: opacity 1500ms;
+  -o-transition: opacity 1500ms;
+  -moz-transition: opacity 1500ms;
+  transition: opacity 1500ms;
+}
+
+.page__main--hide {
+  opacity: 0;
 }
 
 .page__section {
@@ -1363,6 +1393,15 @@ input[type="radio"]:checked + .radio::before {
   text-align: center;
   background-color: #2F4047;
   color: #fff;
+  opacity: 1;
+  -webkit-transition: opacity 1500ms;
+  -o-transition: opacity 1500ms;
+  -moz-transition: opacity 1500ms;
+  transition: opacity 1500ms;
+}
+
+.page__footer--hide {
+  opacity: 0;
 }
 
 .author {

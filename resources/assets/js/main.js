@@ -1,14 +1,14 @@
 doc = document;
 
 let
+    // предзагрузчик для страниц
+    preloaderPage = require('./components/preloaderPage'),
     // сохранение SVG в LocalStorage
     saveSvgToLocalStorageSVG = require('./components/saveSvgToLocalStorageSVG'),
     // открывашка главного меню
     mainMenuOpen = require('./components/mainMenuOpen'),
     // слайде на странице work
     slider = require('./components/slider'),
-    // предзагрузчик для страниц
-    preloaderPage = require('./components/preloaderPage'),
     // эффект паралакса на главной странице
     mouseParallax = require('./components/mouseParallax'),
     // эффект паралакса по скроллу
@@ -28,6 +28,8 @@ let
     // плавная прокрутка на 1 экран вниз
     scrollHandler = require('./components/scrollHandler');
 
+// прелодер
+preloaderPage();
 // сохранение SVG в LocalStorage
 saveSvgToLocalStorageSVG();
 // открывашка главного меню
