@@ -73,7 +73,7 @@
             <p class="author__title">Личный сайт веб разработчика</p>
         </div>
     </div>
-    <a href="#main" class="arrow-down arrow-down">
+    <a href="#main" class="arrow-down">
         <svg class="arrow-down__icon arrow-down__icon--down">
             <use xlink:href="#icon-arrow_down"></use>
         </svg>

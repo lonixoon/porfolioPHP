@@ -5,53 +5,23 @@
   align-items: center;
   height: 100%;
   width: 100%;
-  // background: @green url(../img/preloader-bg.jpg) no-repeat 50%;
-  //opacity: 1;
-  //transition: opacity 1000ms;
-  //background-color: @green;
   z-index: 9999;
 
   &__circle {
-    transition: stroke-dasharray 500ms;
+    //transition: stroke-dasharray 500ms;
 
     &--big {
-      //animation: big 3s linear normal infinite;
-      //transition: stroke-dasharray 1000ms;
       stroke-dasharray: 0 439.82288;
     }
     &--middle {
-      //animation: middle 3s linear normal infinite;
-    //  transition: stroke-dasharray 2000ms;
-    //  animation-iteration-count: infinite;
       stroke-dasharray: 0 345.57512;
     }
     &--small {
-      //animation: small 3s linear normal infinite;
-    //  transition: stroke-dasharray 3000ms;
-    //  animation-iteration-count: infinite;
       stroke-dasharray: 0 251.32736;
     }
   }
 
-  //@keyframes preloader {
-  //  100% {
-  //    opacity: 1;
-  //  }
-  //}
-  //@keyframes middle {
-  //  100% {
-  //    stroke-dasharray: 345.57512;
-  //  }
-  //}
-  //@keyframes small {
-  //  100% {
-  //    stroke-dasharray: 251.32736;
-  //  }
-  //}
-
   &--hide {
-    //transition: all 750ms;
-    //opacity: 0;
     visibility: hidden;
   }
 
