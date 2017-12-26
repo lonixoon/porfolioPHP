@@ -1207,7 +1207,7 @@ input[type="radio"]:checked + .radio::before {
   -o-transition: opacity 1500ms;
   -moz-transition: opacity 1500ms;
   transition: opacity 1500ms;
-  background: url(../img/bg/bg-mobile.jpg) no-repeat;
+  background: url(../img/bg/bg-mobile.jpg) no-repeat 0 15%;
 }
 
 .page__header--hide {
@@ -3271,7 +3271,7 @@ input[type="radio"]:checked + .radio::before {
   }
 
   .page__header {
-    background-image: url(../img/bg/bg-tablet.jpg);
+    background: url(../img/bg/bg-tablet.jpg) no-repeat 0 15%;
   }
 
   .author__wrap {
@@ -3655,7 +3655,7 @@ input[type="radio"]:checked + .radio::before {
   }
 
   .page__header {
-    background-color: #C5CEC9;
+    background: #C5CEC9 url(../img/bg/bg-desktop.jpg) no-repeat 0 15%;
   }
 
   .page__footer {
@@ -4037,6 +4037,12 @@ input[type="radio"]:checked + .radio::before {
   }
 }
 
+@media (min-width: 1200px) and (min-width: 1200px) {
+  __header {
+    background: #C5CEC9 url(../img/bg/bg-desktop.jpg) no-repeat;
+  }
+}
+
 @media (min-width: 1800px) {
   html,
   body {
@@ -4140,7 +4146,7 @@ input[type="radio"]:checked + .radio::before {
   }
 
   .page__header {
-    background: url(../img/bg/bg-mobile.jpg) no-repeat 0 -15%;
+    background: url(../img/bg/bg-tablet.jpg) no-repeat 0 15%;
     height: auto;
     min-height: 500px;
   }
@@ -4149,5 +4155,6 @@ input[type="radio"]:checked + .radio::before {
 @media (max-width: 767px) {
   .page__header {
     height: 92%;
+    background: url(../img/bg/bg-tablet.jpg) no-repeat 0 15%;
   }
 }

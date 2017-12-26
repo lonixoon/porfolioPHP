@@ -295,7 +295,8 @@ module.exports = (function () {
     $.each($('*'), function () { // поиск всех элементов на странице
         let $this = $(this),
             background = $this.css('background-image'), // ищем в css фоны всех элементов (включая элементы у которых фон none)
-            img = $this.is('img'); // проверяем на соответствия элемента тегу img
+            img = $this.is('img'), // проверяем на соответствия элемента тегу img
+            img2 = $this.is('source');
 
         if (background !=='none') { // если фон не равен none
             let path = background.replace('url("', ''). replace('")', ''); // убираем лишние символы
@@ -304,6 +305,14 @@ module.exports = (function () {
 
         if (img) { // если элемент изображение
             let path = $this.attr('src'); // берем scr
+
+            if (path) { // если scr не пустой
+                imgs.push(path); //  добавляем его в массив
+            }
+        }
+
+        if (img2 && ($(window).width() > 1200)) { // если элемент изображение
+            let path = $this.attr('srcset'); // берем srcset
 
             if (path) { // если scr не пустой
                 imgs.push(path); //  добавляем его в массив
@@ -346,6 +355,7 @@ module.exports = (function () {
         $('.preloader__text').text(percent); // выводим % в тексте
 
         if (percent >=100) {
+            console.log(imgs);
             $('.page__header, .page__main, .page__footer').removeClass('page__header--hide page__main--hide page__footer--hide');
             $('.preloader').addClass('preloader--hide');
         }
@@ -753,12 +763,4 @@ sidebarOutput();
 sidebarSticky();
 // плавная прокрутка на 1 экран вниз
 scrollHandler();
-
-
-
-
-
-
-
-
 },{"./components/drawSvgByScroll":1,"./components/fillSkillByScroll":2,"./components/flipLoginBlock":3,"./components/mainMenuOpen":4,"./components/mouseParallax":5,"./components/preloaderPage":6,"./components/saveSvgToLocalStorageSVG":7,"./components/scrollHandler":8,"./components/scrollParallax":9,"./components/sidebarSticky":10,"./components/sitebarOutput":11,"./components/slider":12,"./components/smoothScroll":13}]},{},[14]);

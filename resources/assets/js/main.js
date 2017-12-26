@@ -52,10 +52,3 @@ sidebarOutput();
 sidebarSticky();
 // плавная прокрутка на 1 экран вниз
 scrollHandler();
-
-
-
-
-
-
-

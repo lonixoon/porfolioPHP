@@ -23,16 +23,6 @@
     </svg>
 </div>
 <header id="section-0" class="page__header page__header--inner-page page__header--hide">
-    <div class="parallax">
-        <div class="parallax__layer parallax__layer--scroll"><img src="{{ asset('img/parallax/layer_1.png') }}"></div>
-        <div class="parallax__layer parallax__layer--scroll"><img src="{{ asset('img/parallax/layer_2.png') }}"></div>
-        <div class="parallax__layer parallax__layer--scroll"><img src="{{ asset('img/parallax/layer_3.png') }}"></div>
-        <div class="parallax__layer parallax__layer--scroll"><img src="{{ asset('img/parallax/layer_4.png') }}"></div>
-        <div class="parallax__layer parallax__layer--scroll"><img src="{{ asset('img/parallax/layer_5.png') }}"></div>
-        <div class="parallax__layer parallax__layer--scroll"><img src="{{ asset('img/parallax/layer_6.png') }}"></div>
-        <div class="parallax__layer parallax__layer--scroll"><img src="{{ asset('img/parallax/layer_7.png') }}"></div>
-        <div class="parallax__layer parallax__layer--scroll"><img src="{{ asset('img/parallax/layer_8.png') }}"></div>
-    </div>
     <div class="social">
         <ul class="social__list">
             <li class="social__item"><a href="http://vk.com/lonixon" target="_blank"
