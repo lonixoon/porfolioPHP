@@ -10,7 +10,7 @@ class Work extends Model
     public function getFromDB()
     {
         // Выгружаем все, функцией фильруем и оставляем те у которых поле active == 1
-        $activeWork = $this->all()->filter(function ($value, $key) {
+        $activeWork = $this->all()->reverse()->filter(function ($value, $key) {
             return $value['active'] == '1';
         });
 

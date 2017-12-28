@@ -127,18 +127,8 @@
 	}
 }
 
-@media @mobile-only {
-	.page {
-		&__header {
-			height: 92%;
-			background: url(../img/bg/bg-tablet.jpg) no-repeat 0 15%;
-		}
-	}
-}
-
 @media @tablet {
 	.page {
-		background-position: 0 50%;
 
 		&__icon-corner {
 			height: 65px;
@@ -166,7 +156,6 @@
 
 @media @laptop {
 	.page {
-		background-image: none;
 
 		&__icon-corner {
 			height: 100px;
@@ -187,7 +176,7 @@
 		}
 
 		&__header {
-			background: #C5CEC9 url(../img/bg/bg-desktop.jpg) no-repeat 0 15%;
+			background: #C5CEC9 url(../img/bg/bg-desktop.jpg) no-repeat;
 		}
 
 		&__footer {
@@ -200,9 +189,8 @@
 		}
 	}
 
-	@media @laptop {
+	@media @desktop {
 		&__header {
-			background: #C5CEC9 url(../img/bg/bg-desktop.jpg) no-repeat;
 		}
 	}
 }
