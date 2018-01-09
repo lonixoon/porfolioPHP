@@ -35,6 +35,8 @@ Route::get('/api/work', 'WorkController@indexAPI');
 Route::get('/test2', 'Test2Controller@index');
 Route::post('/test2/result', 'Test2Controller@getFile');
 
+Route::get('/test3', 'Test3Controller@index');
+
 //Route::get('/test3', 'TestPortalController@index');
 
 /* маршруты требующие авторизацию */

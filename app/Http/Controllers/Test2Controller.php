@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Test2;
 use Illuminate\Http\Request;
+use Symfony\Component\DomCrawler\Crawler;
 
 class Test2Controller extends Controller
 {
